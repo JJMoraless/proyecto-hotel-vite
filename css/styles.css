@@ -1,0 +1,22 @@
+.blur {
+  background-color: rgba(29, 140, 238, 0);
+  backdrop-filter: blur(10px);
+}
+
+.bg-login-image {
+  background: url("/public/img/fondo\ Ingresar.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-register-image {
+  background: url("/public/img/fondocrear.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-password-image {
+  background: url("/public/img/fondoContrasena.jpg");
+  background-position: center;
+  background-size: cover;
+}
