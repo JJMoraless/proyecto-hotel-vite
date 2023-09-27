@@ -65,18 +65,17 @@
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a
-                  class="nav-link "
+                  class="nav-link active"
                   aria-current="page"
-                  href="./reservas.html"
-                  >Reservar</a
+                  href="./index.html"
+                  >Home</a
                 >
               </li>
-
-              <li class="nav-item active">
-                <a class="nav-link active" aria-current="page" href="./index.html"
-                  >Home</a
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="./reservas.html"
+                  >Reservar</a
                 >
               </li>
 
@@ -103,39 +102,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="./login.html">Salir</a>
               </li>
-
-              <!-- SUB-MENU DESPLEGABLE -->
-              <!-- <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li> -->
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </div>
@@ -143,87 +110,10 @@
 
     <section class="reservas pt-5">
       <div class="container pb-5">
-        <h2 class="pt-5">Haz reservas</h2>
+        <h2 class="pt-5">Home</h2>
 
         <hr />
-
-        <div class="row g-md-2">
-          <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >nombre huesped</label
-            >
-            <input
-              type="text"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="nombre huesped"
-              required
-            />
-          </div>
-
-          <div class="col-md-5">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Email huesped</label
-            >
-            <input
-              type="email"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
-            />
-          </div>
-
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Documento del huesped</label
-            >
-            <input
-              type="number"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="212312312312"
-            />
-          </div>
-
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Telefono del huesped</label
-            >
-            <input
-              type="email"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
-            />
-          </div>
-
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Numero de Adultos</label
-            >
-            <input
-              type="number"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="0"
-            />
-          </div>
-
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Numero de niños</label
-            >
-            <input
-              type="number"
-              class="form-control mb-3"
-              id="exampleFormControlInput1"
-              placeholder="0"
-            />
-          </div>
-          <hr />
-
-          <div id="calendar"></div>
-        </div>
+        <div id="calendar"></div>
       </div>
     </section>
   </body>

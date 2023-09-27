@@ -32,7 +32,7 @@
         <img
           src="./public/img/logo_hotel-removebg-preview.png"
           alt=""
-          height="70px"
+          height="40px"
         />
         <a class="navbar-brand" href="#">Software dream</a>
 
@@ -55,11 +55,6 @@
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
               Software Dream
-              <img
-                src="./public/img/logo_hotel-removebg-preview.png"
-                alt=""
-                height="50px"
-              />
             </h5>
             <button
               type="button"
@@ -123,29 +118,6 @@
                   >Salir</a
                 >
               </li>
-
-              <!-- SUB-MENU DESPLEGABLE -->
-              <!-- <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li> -->
             </ul>
             <form class="d-flex mt-3" role="search">
               <input
@@ -170,6 +142,19 @@
         <!-- DATOS DEL CLIENTE -->
         <div class="row g-md-2">
           <form id="datos-huesped" action="" class="row g-md-2">
+            <div class="col-md-4">
+              <label for="document" class="form-label"
+                >Documento del huesped</label
+              >
+              <input
+                name="document"
+                type="number"
+                class="form-control mb-1"
+                id="document"
+                placeholder="212312312312"
+              />
+            </div>
+
             <div class="col-md-3">
               <label for="name" class="form-label">nombre huesped</label>
               <input
@@ -190,19 +175,6 @@
                 class="form-control mb-1"
                 id="email"
                 placeholder="name@example.com"
-              />
-            </div>
-
-            <div class="col-md-4">
-              <label for="document" class="form-label"
-                >Documento del huesped</label
-              >
-              <input
-                name="document"
-                type="number"
-                class="form-control mb-1"
-                id="document"
-                placeholder="212312312312"
               />
             </div>
 
@@ -232,95 +204,89 @@
 
         <!-- FECHAS DE RESERVA -->
         <form id="formReserva" class="row">
-          <div class="col-md-4">
-            <label for="numChildrens" class="form-label">Numero de niños</label>
-            <input
-              name="numChildrens"
-              type="number"
-              class="form-control mb-1"
-              id="numChildrens"
-              placeholder="0"
-              value="0"
-            />
-          </div>
-
-          <div class="col-md-4">
-            <label for="numAdults" class="form-label">Numero de adultos</label>
-            <input
-              name="numAdults"
-              type="number"
-              class="form-control mb-3"
-              id="numAdults"
-              placeholder="0"
-              value="0"
-            />
-          </div>
-
-          <div class="col-md-4">
-            <label for="roomNumber" class="form-label"
-              >habitaciones disponibles</label
-            >
-            <select name="roomNumber" class="form-control" id="roomNumber">
-              <option value="501">501</option>
-              <option value="502">502</option>
-              <option value="503">503</option>
-            </select>
-          </div>
-
           <hr />
-
-          <div class="row col-md-4 fechas">
-
-          </div>
-          
-          <div class="row col-md-8 fechas">
-            
-          </div>
-
-          <div class="col-md-4 fechas">
-            <div class="alert alert-primary row-md-12">
-              <h5 class="text-black">Reservar fechas</h5>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="dateEntry" class="form-label"
-                    >Fecha de entrada</label
-                  >
-                  <input
-                    name="dateEntry"
-                    type="date"
-                    class="form-control mb-3"
-                    id="dateEntry"
-                    placeholder="name@example.com"
-                  />
-                </div>
-
-                <div class="col-md-6">
-                  <label for="dateOutput" class="form-label"
-                    >Fecha de salida</label
-                  >
-                  <input
-                    name="dateOutput"
-                    type="date"
-                    class="form-control mb-6"
-                    id="dateOutput"
-                    placeholder="name@example.com"
-                  />
-                </div>
-
-                <div class="col-md-6">
-                  <button id="btnReservar" class="btn btn-success mt-3">
-                    reservar
-                  </button>
-                </div>
-
+          <div class="alert alert-primary row-md-5 col-md-4">
+            <!-- <h5 class="text-black">Reservar fechas</h5> -->
+            <div class="row">
+              <div class="col-md-6">
+                <label for="dateEntry" class="form-label"
+                  >Fecha de entrada</label
+                >
+                <input
+                  name="dateEntry"
+                  type="date"
+                  class="form-control mb-3"
+                  id="dateEntry"
+                  placeholder="name@example.com"
+                />
               </div>
+              <div class="col-md-6">
+                <label for="dateOutput" class="form-label"
+                  >Fecha de salida</label
+                >
+                <input
+                  name="dateOutput"
+                  type="date"
+                  class="form-control mb-6"
+                  id="dateOutput"
+                  placeholder="name@example.com"
+                />
+              </div>
+            </div>
+
+            <div class="row detaller-reserva">
+              <div class="col-md-12">
+                <label for="roomNumber" class="form-label"
+                  >Numero de Habitacion</label
+                >
+                <select id="rooms-select" class="form-select" name="roomNumber">
+                  
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="numAdults" class="form-label"
+                  >Numero de Adultos</label
+                >
+
+                <input
+                  type="number"
+                  class="form-control mb-1"
+                  id="numAdults"
+                  name="numAdults"
+                  placeholder="0"
+                  value="0"
+                />
+              </div>
+
+              <div class="col-md-6">
+                <label for="numChildrens" class="form-label"
+                  >Numero de niños</label
+                >
+
+                <input
+                  type="number"
+                  class="form-control mb-3"
+                  id="numChildrens"
+                  name="numChildrens"
+                  placeholder="0"
+                  value="0"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <button id="btnReservar" class="btn btn-success mt-3">
+                reservar
+              </button>
             </div>
           </div>
 
-          <div class="col-md-8">
+          <div class="row col-md-8 fechas">
             <div id="calendar"></div>
           </div>
+
+          <hr />
         </form>
       </div>
     </main>
