@@ -8,20 +8,18 @@ const $btnReservar = document.querySelector("#btnReservar");
 import "./reserva";
 import { hotelApi } from "./api";
 import { reservar } from "./reserva";
-import { format } from "date-fns";
-
 
 const getReservations = async () => {
   const { data } = await hotelApi.get("reservations/?limit=100");
   return data.data.reservation.map((el) => {
     const color = el.state === "checkIn" ? "#FFA67D" : "#F2D20C";
-
+    const host = el.host.name;
     const dateIn = el.dateEntry;
     const dateExit = new Date(el.dateOutput);
     const nexExit = dateExit.setHours(dateExit.getHours() + 10);
 
     return {
-      title: el.roomNumber,
+      title: "room: " + el.roomNumber + " huesped: " + host,
       start: dateIn,
       end: nexExit,
       backgroundColor: color,
@@ -46,23 +44,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     timeZone: "UTC",
     locale: "es",
     displayEventTime: false,
-
-    // events: [
-    //   {
-    //     title: "prueba",
-    //     start: "2023-10-09",
-    //     end: "2023-10-24",
-    //     allDay: true,
-    //   },
-    // ],
   });
-
-  const newDate1 = format(new Date("2023-10-09T00:00:00.000Z"), "yyyy-MM-dd");
-  const newDate2 = format(new Date("2023-10-24T00:00:00.000Z"), "yyyy-MM-dd");
-
-  console.log("🚀 ~ file: main.js:58 ~ newDate:", newDate1);
-  console.log("🚀 ~ file: main.js:59 ~ newDate2:", newDate2);
-
   $btnReservar.addEventListener("click", async (e = event) => {
     e.preventDefault();
 
@@ -77,6 +59,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     calendar.addEventSource(await getReservations());
     console.log("recarga calendar");
   });
+
 
   calendar.render();
 });

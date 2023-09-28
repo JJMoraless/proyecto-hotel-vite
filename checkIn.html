@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script type="module" src="./js/checkIn/getReservas.js"></script>
+    <script type="module" src="./js/checkIn/modal.js"></script>
 
     <!-- bootstrap -->
     <link
@@ -20,6 +22,7 @@
 
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
@@ -143,118 +146,292 @@
     </nav>
     <section class="reservas pt-5">
       <div class="container pb-5">
-        <h2 class="pt-5">Haz reservas</h2>
-
+        <h2 class="pt-5">Lista de Reservas</h2>
         <hr />
 
-        <div class="row g-md-2">
-          <div class="col-md-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >nombre huesped</label
-            >
-            <input
-              type="text"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="nombre huesped"
-              required
-            />
-          </div>
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="ml-auto"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Identificador</th>
+                <th>Nombre del huesped</th>
+                <th>Telefono</th>
+                <th>Numero de habitacion</th>
+                <th>Fecha de ingreso</th>
+                <th>Fecha de salida</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="table-body-reservations"></tbody>
+          </table>
+        </div>
+        <div
+          class="modal fade"
+          id="reservationDetailsModal"
+          tabindex="-1"
+          aria-labelledby="reservationDetailsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <section class="reservas">
+                <div class="container">
+                  <h2 class="pt-3">Registro de ingreso</h2>
+                  <hr />
 
-          <div class="col-md-5">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Email huesped</label
-            >
-            <input
-              type="email"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
-            />
-          </div>
+                  <!--Datos del huesped-->
+                  <div class="row g-md-2">
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Documento del huesped</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostDocument"
+                        placeholder="Documento"
+                      />
+                    </div>
 
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Documento del huesped</label
-            >
-            <input
-              type="number"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="212312312312"
-            />
-          </div>
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Tipo de documento</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control mb-1"
+                        id="hostDocumentType"
+                        placeholder="Cedula de ciudadania"
+                      />
+                    </div>
 
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Telefono del huesped</label
-            >
-            <input
-              type="email"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
-            />
-          </div>
+                    <div class="col-md-6">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >nombre del huesped</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostName"
+                        placeholder="Nombre"
+                        required
+                      />
+                    </div>
 
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Numero de Adultos</label
-            >
-            <input
-              type="number"
-              class="form-control mb-1"
-              id="exampleFormControlInput1"
-              placeholder="0"
-            />
-          </div>
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Fecha de nacimineto</label
+                      >
+                      <input
+                        type="date"
+                        class="form-control mb-1"
+                        id="hostBirthdate"
+                        placeholder="212312312312"
+                      />
+                    </div>
 
-          <div class="col-md-4">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Numero de niños</label
-            >
-            <input
-              type="number"
-              class="form-control mb-3"
-              id="exampleFormControlInput1"
-              placeholder="0"
-            />
-          </div>
-          <hr />
+                    <div class="col-md-4">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Telefono del huesped</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control mb-1"
+                        id="hostPhone"
+                        placeholder="0000"
+                      />
+                    </div>
 
-          <div class="col-md-4 fechas">
-            <div class="alert alert-primary">
-              <h5 class="text-black">Reservar fechas</h5>
+                    <div class="col-md-5">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Email huesped</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control mb-1"
+                        id="hostEmail"
+                        placeholder="Email"
+                      />
+                    </div>
 
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="exampleFormControlInput1" class="form-label"
-                    >Fecha de entrada</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control mb-3"
-                    id="exampleFormControlInput1"
-                    placeholder="name@example.com"
-                  />
+                    <div class="col-md-5">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Direccion de residencia</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostAddress"
+                        placeholder="Direccion"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Ciudad</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostCity"
+                        placeholder="Ciudad"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Pais</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostCountry"
+                        placeholder="Pais"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Ocupacion</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostOccupation"
+                        placeholder="Ocupación"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Empresa</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostCompany"
+                        placeholder="Empresa"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <div class="col-md-6">
+                        <button
+                          id="btnActualizarHuesped"
+                          class="btn btn-success mt-3 mb-3"
+                        >
+                          Actualizar
+                        </button>
+                      </div>
+                    </div>
+                    <br />
+                    <br />
+                    <hr />
+                    <div class="row g-md-2">
+                      <div class="col-md-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Fecha de entrada</label
+                        >
+                        <input
+                          type="date"
+                          class="form-control mb-3"
+                          id="entryDate"
+                          placeholder="name@example.com"
+                        />
+                      </div>
+
+                      <div class="col-md-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Fecha de salida</label
+                        >
+                        <input
+                          type="date"
+                          class="form-control mb-6"
+                          id="departureDate"
+                          placeholder="name@example.com"
+                        />
+                      </div>
+
+                      <div class="col-md-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Permanencia</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control mb-1"
+                          id="permanence"
+                          placeholder="Permanencia"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-md-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Motivo de viaje</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control mb-1"
+                          id="motive"
+                          placeholder="motivo"
+                        />
+                      </div>
+
+                      <div class="col-md-5">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Establecimiento</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control mb-1"
+                          id="place"
+                          placeholder="Escuela Hotel Sena"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <button id="btnCheckIn" class="btn btn-success mt-3 mb-3 ">
+                        Ingresar
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="col-md-6">
-                  <label for="exampleFormControlInput1" class="form-label"
-                    >Fecha de salida</label
-                  >
-                  <input
-                    type="date"
-                    class="form-control mb-6"
-                    id="exampleFormControlInput1"
-                    placeholder="name@example.com"
-                  />
-                </div>
-
-                <button class="btn btn-dark">reservar</button>
-              </div>
+              </section>
             </div>
           </div>
+        </div>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previus">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="content">
+          <div class="page" data-page="1"></div>
+          <div class="page" data-page="2"></div>
+          <div class="page" data-page="3"></div>
         </div>
       </div>
     </section>
