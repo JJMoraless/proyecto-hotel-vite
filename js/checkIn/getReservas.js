@@ -1,3 +1,4 @@
+
 import { hotelApi } from "../api";
 
 const formatDate = (dateString) => {
@@ -5,7 +6,7 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-const getReservationsCheckIn = async () => {
+export const getReservationsCheckIn = async () => {
   try {
     const response = await hotelApi.get("reservations/?limit=200");
     const reservations = response.data.data.reservation || [];
@@ -15,19 +16,23 @@ const getReservationsCheckIn = async () => {
 
     // Limpia cualquier contenido previo en la tabla
     tableBody.innerHTML = '';
+  
 
     // Itera a través de los datos de las reservas y agrega filas a la tabla
     for (const reservation of reservations) {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${reservation.id}</td>
-        <td>${reservation.host ? reservation.host.name : 'en espera'}</td>
-        <td>${reservation.host ? reservation.host.numberPhone : 'en espera'}</td>
+        <td>${reservation.host ? reservation.host.name : ''}</td>
+        <td>${reservation.host ? reservation.host.numberPhone : ''}</td>
         <td>${reservation.roomNumber}</td>
         <td>${formatDate(reservation.dateEntry)}</td>
         <td>${formatDate(reservation.dateOutput)}</td>
         <td>
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationDetailsModal" onclick="openReservationModal(${JSON.stringify(reservation)})">Ver Detalles</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationDetailsModal" data-reservation-id="${reservation.id}">Registrar</button>
+        </td>
+        <td>
+          <button class="btn btn-danger delete-reservation" data-reservation-id="${reservation.id}">Eliminar</button>
         </td>
       `;
       tableBody.appendChild(row);
@@ -37,5 +42,5 @@ const getReservationsCheckIn = async () => {
   }
 };
 
-// Llama a la función para obtener y mostrar las reservas
-getReservationsCheckIn();
+// Llama a la función para obtener y mostrar las reservas cuando se cargue la página
+window.addEventListener('load', getReservationsCheckIn);

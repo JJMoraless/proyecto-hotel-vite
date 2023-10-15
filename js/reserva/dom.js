@@ -12,6 +12,8 @@ const $inputExitDate = document.querySelector("#dateOutput");
 const $roomsSelect = document.querySelector("#rooms-select");
 const nowDate = new Date().toISOString().split("T")[0];
 
+const $datesVoidsError = document.querySelector("#errorAlertDates");
+
 $inputExitDate.setAttribute("min", nowDate);
 $inputInDate.setAttribute("min", nowDate);
 
@@ -19,11 +21,6 @@ const getRoomsAvailable = async (start, end) => {
   const rooms = await hotelApi.get(
     `rooms/available?date_entry=${start}&date_output=${end}`
   );
-
-  console.log({
-    api: `rooms/available?date_entry=${start}&date_output=${end}`,
-  });
-
   return rooms;
 };
 
@@ -66,8 +63,7 @@ export const reservar = async () => {
     numChildrens,
     numAdults,
     roomNumber,
-    // dateEntry,
-    // dateOutput,
+
     ...dataReservation
   } = Object.fromEntries(new FormData($formReserva));
 
@@ -83,6 +79,12 @@ export const reservar = async () => {
     errorAlert.classList.remove("ocultar");
     throw new Error("error en las fechas");
   }
+
+  if ($inputInDate.value === "" || $inputExitDate.value === "") {
+    $datesVoidsError.classList.remove("ocultar");
+    throw new Error("fechas deben estar llenas");
+  }
+  $datesVoidsError.classList.add("ocultar");
   errorAlert.classList.add("ocultar");
   try {
     const res = await hotelApi.post("/reservations", {
@@ -95,20 +97,8 @@ export const reservar = async () => {
     });
     console.log("🚀 ~ file: dom.js:95 ~ reser ~ res:", res);
   } catch (error) {
-    const hostError = error.response.data.errors.find((el) => {
-      return el.path === "hostDocument";
-    });
-
-    console.log("🚀 ~ file: dom.js:101 ~ hostError ~ hostError:", hostError)
-
-    if (!!hostError) {
-      errorAlertHost.classList.remove("ocultar");
-      throw new Error("error en el huesped");
-    } else {
-      errorAlertHost.classList.add("ocultar");
-    }
-    throw new Error("error en en la reserca #");
-
+    errorAlertHost.classList.remove("ocultar");
+    throw new Error("error en el huesped");
   }
 
   errorAlertHost.classList.add("ocultar");
@@ -120,9 +110,11 @@ const findHostById = async (e = event) => {
   const { document: hostDocument } = Object.fromEntries(
     new FormData($formHuesped)
   );
+
   const {
     data: { data },
   } = await hotelApi.get(`/host/${hostDocument}`);
+  
   document.querySelector("#email").value = data.host.email;
   document.querySelector("#name").value = data.host.name;
   document.querySelector("#numberPhone").value = data.host.numberPhone;

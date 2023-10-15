@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script type="module" src="./js/checkIn/getReservas.js"></script>
-    <script type="module" src="./js/checkIn/modal.js"></script>
+    <script type="module" src="./js/checkIn/modalRegistro.js"></script>
+    <script type="module" src="./js/checkIn/eliminarReserva.js"></script>
 
     <!-- bootstrap -->
     <link
@@ -14,6 +15,12 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -29,9 +36,9 @@
         <img
           src="./public/img/logo_hotel-removebg-preview.png"
           alt=""
-          height="70px"
+          height="50px"
         />
-        <a class="navbar-brand" href="#">CheckIn</a>
+        <a class="navbar-brand" href="#">Software dream</a>
 
         <button
           class="navbar-toggler"
@@ -67,6 +74,14 @@
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item ">
+                <a
+                  class="nav-link "
+                  href="./index.html"
+                  >Home</a
+                >
+              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="./reservas.html"
                   >Reservar</a
@@ -74,18 +89,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="./index.html"
-                  >Home</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="./checkIn.html"
-                  >Check-In</a
-                >
+                <a class="nav-link active" href="./checkIn.html">Check-In</a>
               </li>
 
               <li class="nav-item">
@@ -105,41 +109,26 @@
               </li>
 
               <li class="nav-item">
+                <a class="nav-link" href="./inventario.html">Inventario</a>
+              </li>
+
+              
+              <li class="nav-item">
+                <a class="nav-link" href="./Asistencia.html">Asistencia</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="./minibar.html">Minibar</a>
+              </li>
+              
+              <hr>
+
+              <li class="nav-item btn btn-danger ">
                 <a class="nav-link" href="./login.html">Salir</a>
               </li>
 
-              <!-- SUB-MENU DESPLEGABLE -->
-              <!-- <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li> -->
+              
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </div>
@@ -158,13 +147,14 @@
           >
             <thead>
               <tr>
-                <th>Identificador</th>
+                <th>Numero</th>
                 <th>Nombre del huesped</th>
                 <th>Telefono</th>
                 <th>Numero de habitacion</th>
                 <th>Fecha de ingreso</th>
                 <th>Fecha de salida</th>
-                <th>Acciones</th>
+                <th>Registrar</th>
+                <th>Eliminar</th>
               </tr>
             </thead>
             <tbody id="table-body-reservations"></tbody>
@@ -179,11 +169,20 @@
         >
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-              <section class="reservas">
-                <div class="container">
-                  <h2 class="pt-3">Registro de ingreso</h2>
-                  <hr />
-
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Registro de ingreso
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <br />
+              <section class="reservas pt-5">
+                <div class="container pb-5">
                   <!--Datos del huesped-->
                   <div class="row g-md-2">
                     <div class="col-md-3">
@@ -195,6 +194,7 @@
                         class="form-control mb-1"
                         id="hostDocument"
                         placeholder="Documento"
+                        disabled="true"
                       />
                     </div>
 
@@ -203,14 +203,15 @@
                         >Tipo de documento</label
                       >
                       <input
-                        type="number"
+                        type="text"
                         class="form-control mb-1"
                         id="hostDocumentType"
                         placeholder="Cedula de ciudadania"
+                        disabled="true"
                       />
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                       <label for="exampleFormControlInput1" class="form-label"
                         >nombre del huesped</label
                       >
@@ -220,6 +221,7 @@
                         id="hostName"
                         placeholder="Nombre"
                         required
+                        disabled="true"
                       />
                     </div>
 
@@ -232,6 +234,7 @@
                         class="form-control mb-1"
                         id="hostBirthdate"
                         placeholder="212312312312"
+                        disabled="true"
                       />
                     </div>
 
@@ -244,10 +247,11 @@
                         class="form-control mb-1"
                         id="hostPhone"
                         placeholder="0000"
+                        disabled="true"
                       />
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                       <label for="exampleFormControlInput1" class="form-label"
                         >Email huesped</label
                       >
@@ -256,6 +260,7 @@
                         class="form-control mb-1"
                         id="hostEmail"
                         placeholder="Email"
+                        disabled="true"
                       />
                     </div>
 
@@ -269,6 +274,7 @@
                         id="hostAddress"
                         placeholder="Direccion"
                         required
+                        disabled="true"
                       />
                     </div>
 
@@ -282,10 +288,11 @@
                         id="hostCity"
                         placeholder="Ciudad"
                         required
+                        disabled="true"
                       />
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <label for="exampleFormControlInput1" class="form-label"
                         >Pais</label
                       >
@@ -295,6 +302,7 @@
                         id="hostCountry"
                         placeholder="Pais"
                         required
+                        disabled="true"
                       />
                     </div>
 
@@ -308,6 +316,7 @@
                         id="hostOccupation"
                         placeholder="Ocupación"
                         required
+                        disabled="true"
                       />
                     </div>
 
@@ -321,22 +330,48 @@
                         id="hostCompany"
                         placeholder="Empresa"
                         required
+                        disabled="true"
                       />
                     </div>
 
-                    <div>
-                      <div class="col-md-6">
+                    <div class="row g-md-2">
+                      <div class="col-md-2">
+                        <button
+                          id="btnHabilitarEdicion"
+                          class="btn btn-success mt-3"
+                        >
+                          Modificar
+                        </button>
+                      </div>
+                      <div class="col-md-2">
                         <button
                           id="btnActualizarHuesped"
-                          class="btn btn-success mt-3 mb-3"
+                          class="btn btn-success mt-3"
+                          disabled="true"
                         >
                           Actualizar
                         </button>
                       </div>
                     </div>
+                    <div id="mensajeHuesped" style="display: none">
+                      <p>Se ha modificado la informacion del huesped</p>
+                    </div>
                     <br />
                     <br />
                     <hr />
+                    <div class="col-md-1">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Numero de reserva</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="numReserva"
+                        placeholder="00"
+                        required
+                        disabled="true"
+                      />
+                    </div>
                     <div class="row g-md-2">
                       <div class="col-md-3">
                         <label for="exampleFormControlInput1" class="form-label"
@@ -347,6 +382,7 @@
                           class="form-control mb-3"
                           id="entryDate"
                           placeholder="name@example.com"
+                          disabled="true"
                         />
                       </div>
 
@@ -359,6 +395,7 @@
                           class="form-control mb-6"
                           id="departureDate"
                           placeholder="name@example.com"
+                          disabled="true"
                         />
                       </div>
 
@@ -372,6 +409,7 @@
                           id="permanence"
                           placeholder="Permanencia"
                           required
+                          disabled="true"
                         />
                       </div>
 
@@ -380,7 +418,7 @@
                           >Motivo de viaje</label
                         >
                         <input
-                          type="email"
+                          type="text"
                           class="form-control mb-1"
                           id="motive"
                           placeholder="motivo"
@@ -396,17 +434,39 @@
                           class="form-control mb-1"
                           id="place"
                           placeholder="Escuela Hotel Sena"
+                          disabled="true"
                         />
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <button id="btnCheckIn" class="btn btn-success mt-3 mb-3 ">
+                      <button id="btnCheckIn" class="btn btn-success mt-3">
                         Ingresar
                       </button>
+                    </div>
+                    <!-- <div id="mensajeRegistro" style="display: none">
+                      <p>Se ha registrado al huesped</p>
+                    </div> -->
+
+                    <div
+                      id="mensajeRegistro"
+                      class="alert ocultar alert-danger animate__animated animate__fadeInDown"
+                      role="alert"
+                      style="display: none"
+                    >
+                      🧙‍♂️🤌 Se ha registrado al huesped exitosamente
                     </div>
                   </div>
                 </div>
               </section>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+              </div>
             </div>
           </div>
         </div>

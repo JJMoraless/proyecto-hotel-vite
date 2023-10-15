@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Asistencia</title>
 
     <!-- bootstrap -->
     <link
@@ -18,9 +18,9 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="./js/index/calendar.js"></script>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
@@ -65,15 +65,14 @@
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item active">
+              <li class="nav-item ">
                 <a
-                  class="nav-link active"
-                  aria-current="page"
+                  class="nav-link "
                   href="./index.html"
                   >Home</a
                 >
               </li>
-              
+
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="./reservas.html"
                   >Reservar</a
@@ -104,18 +103,19 @@
                 <a class="nav-link" href="./inventario.html">Inventario</a>
               </li>
 
-              
-              <li class="nav-item">
-                <a class="nav-link" href="./Asistencia.html">Asistencia</a>
+              <li class="nav-item active">
+                <a class="nav-link active" href="./Asistencia.html">Asistencia</a>
               </li>
 
               <li class="nav-item ">
                 <a class="nav-link " href="./minibar.html">Minibar</a>
               </li>
-              
-              <hr>
 
-              <li class="nav-item btn btn-danger ">
+              
+
+              <hr />
+
+              <li class="nav-item btn btn-danger">
                 <a class="nav-link" href="./login.html">Salir</a>
               </li>
             </ul>
@@ -124,37 +124,60 @@
       </div>
     </nav>
 
-    <section class="reservas pt-5">
-      <div class="container pb-5">
-        <h2 class="pt-5">Home</h2>
-
-        <hr />
-        <div id="calendar"></div>
+    <section class="asistencia pt-5">
+      <h1>Lista de Asistencia</h1>
+      <div id="attendanceList">
+        <table>
+          <tr>
+            <th>Nombre del Estudiante</th>
+            <th>Asistencia</th>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Nombre del Estudiante 1" /></td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Nombre del Estudiante 2" /></td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <!-- se agregan las filas ue hagan falta (no se si se agregan desde base de datos, no sé hacerlo) -->
+        </table>
+        <button onclick="guardarAsistencia()">Guardar Asistencia</button>
       </div>
     </section>
-
-    <div
-      class="modal fade"
-      id="eventModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="eventModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="eventModalLabel"></h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body" id="eventModalBody"></div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
+
+<!-- HAY QUE PONERLO EN JS PERO NO SABIA DONDE -->
+<!-- function guardarAsistencia() {
+    // Declara una matriz para almacenar la asistencia
+var asistenciaData = [];
+
+// Obtén la tabla de asistencia por su ID
+var table = document.querySelector("#attendanceList table");
+
+// Encuentra todas las filas de la tabla, excepto la primera (encabezado)
+var filas = table.querySelectorAll("tr:not(:first-child)");
+
+// Recorre todas las filas de estudiantes
+filas.forEach(function(fila) {
+    var nombre = fila.querySelector("input[type='text']").value;
+    var asistencia = fila.querySelector("input[type='checkbox']").checked;
+
+    // Crea un objeto que representa la asistencia de un estudiante
+    var asistenciaEstudiante = {
+        nombre: nombre,
+        asistencia: asistencia
+    };
+
+    // Agrega el objeto de asistencia a la matriz
+    asistenciaData.push(asistenciaEstudiante);
+});
+
+// se puede hacer una accion como enviarla a un servidor usando una solicitud AJAX, pero es opcional
+
+// Muestra la matriz en la consola (solo para fines de demostración)
+console.log(asistenciaData);
+
+    alert("Asistencia guardada correctamente.");
+} -->

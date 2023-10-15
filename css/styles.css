@@ -1,3 +1,8 @@
+
+/*
+    DEMO STYLE
+*/
+
 .blur {
   background-color: rgba(29, 140, 238, 0);
   backdrop-filter: blur(10px);
@@ -23,4 +28,129 @@
 
 .ocultar {
   display: none;
+}
+
+
+
+.blur {
+  background-color: rgba(29, 140, 238, 0);
+  backdrop-filter: blur(10px);
+}
+
+.bg-login-image {
+  background: url("/public/img/fondo\ Ingresar.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-register-image {
+  background: url("/public/img/fondocrear.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-password-image {
+  background: url("/public/img/fondoContrasena.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#attendanceList {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#attendanceList table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#attendanceList th, #attendanceList td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+#attendanceList th {
+  background-color: #f2f2f2;
+}
+
+#attendanceList input[type="text"] {
+  width: 100%;
+  padding: 5px;
+}
+
+#attendanceList button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+#attendanceList button:hover {
+  background-color: #45a049;
+}
+
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.task input[type="text"] {
+  width: 70%;
+  padding: 5px;
+}
+
+.task button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.task button:hover {
+  background-color: #45a049;
+}
+
+#notes {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#notes textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+#notes button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#notes button:hover {
+  background-color: #45a049;
+}
+
+#sharedNotes {
+  border: 1px solid #ccc;
+  padding: 10px;
 }
