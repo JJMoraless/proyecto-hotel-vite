@@ -14,12 +14,12 @@ const getReservations = async () => {
     const host = el.host.name;
     const dateIn = el.dateEntry;
     const dateExit = new Date(el.dateOutput);
-    const nexExit = dateExit.setHours(dateExit.getHours() + 24);
+
 
     return {
       title: "🧙‍♂️ room " + el.roomNumber + " - " + host,
       start: dateIn,
-      end: nexExit,
+      end: dateExit,
       color,
       description: `
         <b>codigo reserva :  ${el.id} </b>

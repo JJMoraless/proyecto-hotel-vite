@@ -1,4 +1,2 @@
-import "./navbar";
-import "./sidebar";
-
-
+export * from './navbar';
+export * from './sidebar';

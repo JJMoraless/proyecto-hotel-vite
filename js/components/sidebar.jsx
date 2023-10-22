@@ -4,9 +4,7 @@ const $sidebar = $("#sidebar");
 
 
 /**
- * 
- * class active para los liks
- * 
+ * todo: falta class active para los liks
  */
 
 $sidebar.innerHTML = /*html*/ `

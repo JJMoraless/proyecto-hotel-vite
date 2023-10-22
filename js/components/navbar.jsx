@@ -1,10 +1,9 @@
 import { $ } from "../utils/functions";
-
 const $navbar = $("#navbar");
 
 $navbar.innerHTML = /*html*/ `
-
     <a  class="bx  toggle-sidebar d-none"></a>
+    <h5>Dream 5 App</h5>
     <img  src="./public/img/logo_hotel-removebg-preview.png" width="60px" />
     <form action="#"></form>
     <span class="divider"></span>
@@ -15,13 +14,13 @@ $navbar.innerHTML = /*html*/ `
         />
         <ul class="profile-link">
         <li>
-            <a href="#"><i class="bx bxs-user-circle icon"></i> Profile</a>
+            <a href="#"><i class="bx bxs-user-circle icon"></i>Profile</a>
         </li>
         <li>
-            <a href="#"><i class="bx bxs-cog"></i> Settings</a>
+            <a href="#"><i class="bx bxs-cog"></i>Settings</a>
         </li>
         <li>
-            <a href="#"><i class="bx bxs-log-out-circle"></i> Logout</a>
+            <a href="login.html"><i class="bx bxs-log-out-circle"></i>Logout</a>
         </li>
         </ul>
     </div>

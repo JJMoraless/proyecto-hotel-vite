@@ -3,7 +3,7 @@
 */
 
 .blur {
-  background-color: rgba(255, 255, 255, 0.651);  
+  background-color: rgba(255, 255, 255, 0.651);
   backdrop-filter: blur(10px);
 }
 
@@ -34,8 +34,11 @@ html {
 }
 
 body {
-  background: var(--grey) !important;
   overflow-x: hidden;
+}
+
+main {
+  background: var(--grey) !important;
 }
 
 a {
@@ -614,7 +617,6 @@ main .btn-send:hover {
   display: none;
 }
 
-
 .bg-login-image {
   background: url("/public/img/fondo\ Ingresar.jpg");
   background-position: center;
@@ -731,4 +733,9 @@ h1 {
 #sharedNotes {
   border: 1px solid #ccc;
   padding: 10px;
+}
+
+
+.table-consumbales {
+  max-height: 200px;
 }

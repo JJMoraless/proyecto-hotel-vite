@@ -2,7 +2,7 @@
  * Encuentra y devuelve el primer elemento que coincida con el selector CSS especificado.
  *
  * @param {string} element - El selector CSS para buscar el elemento.
- * @returns {Element|null} El primer elemento que coincide con el selector, o null si no se encuentra ninguno.
+ * @returns {Element|null} El primer elemento que coincide con el selector
  */
 export const $ = (element) => document.querySelector(element);
 

@@ -19,25 +19,34 @@ const getReservations = async () => {
     const host = el.host.name;
     const dateIn = el.dateEntry;
     const dateExit = new Date(el.dateOutput);
-    const nexExit = dateExit.setHours(dateExit.getHours() + 10);
 
+    const infoRegister = () => {
+      return /*html*/`
+        motivo viaje : ${el.register.travel_reason}
+      `;
+    };
+    
     return {
-      title: "🧙‍♂️ room " + el.roomNumber + " - " + host,
+      title: "🧙‍♂️📜 Room: " + el.roomNumber + " - " + host,
       start: dateIn,
-      end: nexExit,
+      end: dateExit,
       color,
-      description: `
-        <b>codigo reserva :  ${el.id} </b>
+      description: /*html*/ `
+        codigo reserva :  <span class="badge text-bg-success"> ${el.id} </span>
         <hr/>
-        documento: ${el.host.document}
+        huesped responsable:
+        <ol>
+          <li>- nombre: ${el.host.name}</li>
+          <li>- documento: ${el.host.document}</li>
+          <li>- tel: ${el.host.numberPhone} </li>
+          <li>- email: ${el.host.email}  </li>
+        </ol>
+        <hr/>
+       
+        regitrado: ${el.register ? "si" : "no"}
         <br/>
-        nombre: ${el.host.name} 
-        <br/>
-        tel: ${el.host.numberPhone} 
-        <br/>
-        email: ${el.host.email} 
+        ${el.register?.travel_reason ? infoRegister() : ""}
       `,
-      category: "Presentación",
     };
   });
 };
@@ -60,9 +69,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       // left: "prev,next",
       // right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
     },
-    eventMouseEnter: function(info) {
+    eventMouseEnter: function (info) {
       var eventElement = info.el;
-      eventElement.style.cursor = 'pointer'; // Cambia el cursor
+      eventElement.style.cursor = "pointer"; // Cambia el cursor
     },
     themeSystem: "bootstrap5",
     events: (await getReservations()) || [],

@@ -1,19 +1,20 @@
 import { hotelApi } from "../api";
-// import { formaDates } from "./helpers";
-const $btnSaveHost = document.querySelector("#btnSaveHost");
-const $btnFindHost = document.querySelector("#btn-find-host");
+import { $ } from "../utils/functions";
 
-const $formHuesped = document.querySelector("#datos-huesped");
-const $formReserva = document.querySelector("#formReserva");
+// botones
+const $btnSaveHost = $("#btnSaveHost");
+const $btnFindHost = $("#btn-find-host");
+// Forms
+const $formHuesped = $("#datos-huesped");
+const $formReserva = $("#formReserva");
+// inputs
+const $inputInDate = $("#dateEntry");
+const $inputExitDate = $("#dateOutput");
+// alerts
+const $roomsSelect = $("#rooms-select");
+const $datesVoidsError = $("#errorAlertDates");
 
-const $inputInDate = document.querySelector("#dateEntry");
-const $inputExitDate = document.querySelector("#dateOutput");
-
-const $roomsSelect = document.querySelector("#rooms-select");
 const nowDate = new Date().toISOString().split("T")[0];
-
-const $datesVoidsError = document.querySelector("#errorAlertDates");
-
 $inputExitDate.setAttribute("min", nowDate);
 $inputInDate.setAttribute("min", nowDate);
 
@@ -46,34 +47,19 @@ const guardarHuesped = async (e = event) => {
     new FormData($formHuesped)
   );
 
-  const res = await hotelApi.post("host", {
+  await hotelApi.post("host", {
     ...dataForm,
     document: document.toString(),
   });
-
-  console.log("🚀 ~ file: dom.js:14 ~ guardarHuesped ~ res:", res);
 };
 
-const errorAlert = document.querySelector("#errorAlert");
-const errorAlertHost = document.querySelector("#errorAlertHost");
+const errorAlert = $("#errorAlert");
+const errorAlertHost = $("#errorAlertHost");
 
 export const reservar = async () => {
   const { document = 0 } = Object.fromEntries(new FormData($formHuesped));
-  const {
-    numChildrens,
-    numAdults,
-    roomNumber,
-
-    ...dataReservation
-  } = Object.fromEntries(new FormData($formReserva));
-
-  console.log("🚀 ~ file: dom.js:22 ~ eventoReservar ~ dataReservations:", {
-    ...dataReservation,
-    document,
-    numChildrens,
-    numAdults,
-    roomNumber,
-  });
+  const { numChildrens, numAdults, roomNumber, ...dataReservation } =
+    Object.fromEntries(new FormData($formReserva));
 
   if (new Date($inputInDate.value) > new Date($inputExitDate.value)) {
     errorAlert.classList.remove("ocultar");
@@ -84,8 +70,14 @@ export const reservar = async () => {
     $datesVoidsError.classList.remove("ocultar");
     throw new Error("fechas deben estar llenas");
   }
+
   $datesVoidsError.classList.add("ocultar");
   errorAlert.classList.add("ocultar");
+
+  // Suma 24 horas a la fecha de salida
+  const exitDate = new Date($inputExitDate.value);
+  exitDate.setHours(exitDate.getHours() + 23, 59,0,0);
+
   try {
     const res = await hotelApi.post("/reservations", {
       ...dataReservation,
@@ -94,6 +86,7 @@ export const reservar = async () => {
       roomNumber: Number(roomNumber),
       hostDocument: document.toString(),
       userId: 1,
+      dateOutput: exitDate,
     });
     console.log("🚀 ~ file: dom.js:95 ~ reser ~ res:", res);
   } catch (error) {
@@ -114,10 +107,10 @@ const findHostById = async (e = event) => {
   const {
     data: { data },
   } = await hotelApi.get(`/host/${hostDocument}`);
-  
-  document.querySelector("#email").value = data.host.email;
-  document.querySelector("#name").value = data.host.name;
-  document.querySelector("#numberPhone").value = data.host.numberPhone;
+
+  $("#email").value = data.host.email;
+  $("#name").value = data.host.name;
+  $("#numberPhone").value = data.host.numberPhone;
 };
 
 $inputExitDate.addEventListener("change", fillRooms);
