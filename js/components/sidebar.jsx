@@ -26,6 +26,10 @@ $sidebar.innerHTML = /*html*/ `
     <li>
       <a href="estadia.html"><i class="bx bxs-widget icon"></i>Estadia</a>
     </li>
+    
+    <li>
+      <a href="aprendices.html"><i class="bx bxs-widget icon"></i>aprendices</a>
+    </li>
  
   </ul>
 `;

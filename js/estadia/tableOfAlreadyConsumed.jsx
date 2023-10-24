@@ -8,7 +8,7 @@ export const getRowsBodyConsumed = ({ products = [], $table }) => {
     const $tr = document.createElement("tr");
     $tr.innerHTML = /*html*/ `
       <td>${product.name}</td>
-      <td>$${product.price}</td>
+      <td>$${product.RegisterProduct.price}</td>
       <td>#${product.RegisterProduct.amount}</td>
       <td>$${product.RegisterProduct.total}</td>
     `;
@@ -30,7 +30,7 @@ export const fillBodyOfTablesConsumed = () => {
 
 export const tableOfAlreadyConsumed = ({ reservation, registerId }) => {
   return /*html*/ `
-      <div class="card shadow-sm">
+      <div class="card shadow-lg">
         <div class="card-header">consumido por el huesped</div>
         <div class="card-body table-consumbales overflow-y-scroll">
           <table class="table">

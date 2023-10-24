@@ -739,3 +739,8 @@ h1 {
 .table-consumbales {
   max-height: 200px;
 }
+
+
+.table-min-h {
+  max-height: 200px;
+}

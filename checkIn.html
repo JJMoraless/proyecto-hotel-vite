@@ -72,65 +72,254 @@
             </table>
           </div>
           <div
-            class="modal fade"
-            id="reservationDetailsModal"
-            tabindex="-1"
-            aria-labelledby="reservationDetailsModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    Registro de ingreso
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <br />
-                <section class="reservas pt-5">
-                  <div class="container pb-5">
-                    <!--Datos del huesped-->
+          class="modal fade"
+          id="reservationDetailsModal"
+          tabindex="-1"
+          aria-labelledby="reservationDetailsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Registro de ingreso
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <br />
+              <section class="reservas pt-5">
+                <div class="container pb-5">
+                  <!--Datos del huesped-->
+                  <h3>Huesped</h3>
+                  <div class="row g-md-2">
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Documento del huésped</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostDocument"
+                        placeholder="Documento"
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Tipo de documento</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostDocumentType"
+                        placeholder="Cedula de ciudadania"
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-5">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >nombre del huésped</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostName"
+                        placeholder="Nombre"
+                        required
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Fecha de nacimiento</label
+                      >
+                      <input
+                        type="date"
+                        class="form-control mb-1"
+                        id="hostBirthdate"
+                        placeholder="212312312312"
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Teléfono del huésped</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control mb-1"
+                        id="hostPhone"
+                        placeholder="0000"
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Email huésped</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control mb-1"
+                        id="hostEmail"
+                        placeholder="Email"
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-5">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Dirección de residencia</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostAddress"
+                        placeholder="Direccion"
+                        required
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Ciudad</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostCity"
+                        placeholder="Ciudad"
+                        required
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Pais</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostCountry"
+                        placeholder="País"
+                        required
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Ocupación</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostOccupation"
+                        placeholder="Ocupación"
+                        required
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="col-md-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Empresa</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="hostCompany"
+                        placeholder="Empresa"
+                        required
+                        disabled="true"
+                      />
+                    </div>
+
+                    <div class="row g-md-2">
+                      <div class="col-md-2">
+                        <button
+                          id="btnHabilitarEdicion"
+                          class="btn btn-success mt-3"
+                        >
+                          Modificar
+                        </button>
+                      </div>
+                      <div class="col-md-2">
+                        <button
+                          id="btnActualizarHuesped"
+                          class="btn btn-success mt-3"
+                          disabled="true"
+                        >
+                          Actualizar
+                        </button>
+                      </div>
+                    </div>
+                    <div id="mensajeHuesped" style="display: none">
+                      <p>Se ha modificado la informacion del huésped</p>
+                    </div>
+                    <br />
+                    <br />
+                    <hr />
+                    <div class="col-md-1">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Número de reserva</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mb-1"
+                        id="numReserva"
+                        placeholder="00"
+                        required
+                        disabled="true"
+                      />
+                    </div>
                     <div class="row g-md-2">
                       <div class="col-md-3">
                         <label for="exampleFormControlInput1" class="form-label"
-                          >Documento del huesped</label
+                          >Fecha de entrada</label
                         >
                         <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostDocument"
-                          placeholder="Documento"
+                          type="date"
+                          class="form-control mb-3"
+                          id="entryDate"
+                          placeholder="name@example.com"
                           disabled="true"
                         />
                       </div>
 
                       <div class="col-md-3">
                         <label for="exampleFormControlInput1" class="form-label"
-                          >Tipo de documento</label
+                          >Fecha de salida</label
                         >
                         <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostDocumentType"
-                          placeholder="Cedula de ciudadania"
+                          type="date"
+                          class="form-control mb-6"
+                          id="departureDate"
+                          placeholder="name@example.com"
                           disabled="true"
                         />
                       </div>
 
-                      <div class="col-md-5">
+                      <div class="col-md-3">
                         <label for="exampleFormControlInput1" class="form-label"
-                          >nombre del huesped</label
+                          >Permanencia</label
                         >
                         <input
                           type="text"
                           class="form-control mb-1"
-                          id="hostName"
-                          placeholder="Nombre"
+                          id="permanence"
+                          placeholder="Permanencia"
                           required
                           disabled="true"
                         />
@@ -138,259 +327,297 @@
 
                       <div class="col-md-3">
                         <label for="exampleFormControlInput1" class="form-label"
-                          >Fecha de nacimineto</label
+                          >Motivo de viaje</label
                         >
                         <input
-                          type="date"
+                          type="text"
                           class="form-control mb-1"
-                          id="hostBirthdate"
-                          placeholder="212312312312"
-                          disabled="true"
+                          id="motive"
+                          placeholder="motivo"
                         />
                       </div>
 
-                      <div class="col-md-4">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Telefono del huesped</label
-                        >
-                        <input
-                          type="number"
-                          class="form-control mb-1"
-                          id="hostPhone"
-                          placeholder="0000"
-                          disabled="true"
-                        />
+                      <div>
+                        <div class="col-md-5">
+                          <button
+                            id="btnAcompañante"
+                            class="btn btn-success mt-3"
+                          >
+                            Agregar Acompañante
+                          </button>
+                        </div>
                       </div>
 
-                      <div class="col-md-4">
+                      <div id="divAcompañante">
+                        <div class="row g-md-10">
+                          <hr />
+                          <h3>Acompañante</h3>
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Documento</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionDocument"
+                              placeholder="Documento"
+                            />
+                          </div>
+
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Tipo de documento</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionDocumentType"
+                              placeholder="Cedula de ciudadania"
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-5">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Nombre del Acompañante</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionName"
+                              placeholder="Nombre"
+                              required
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Fecha de nacimiento</label
+                            >
+                            <input
+                              type="date"
+                              class="form-control mb-1"
+                              id="companionBirthdate"
+                              placeholder="212312312312"
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-4">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Teléfono del Acompañante</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control mb-1"
+                              id="companionPhone"
+                              placeholder="0000"
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-4">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Email Acompañante</label
+                            >
+                            <input
+                              type="email"
+                              class="form-control mb-1"
+                              id="companionEmail"
+                              placeholder="Email"
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-5">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Dirección de residencia</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionAddress"
+                              placeholder="Direccion"
+                              required
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Ciudad</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionCity"
+                              placeholder="Ciudad"
+                              required
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >País</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionCountry"
+                              placeholder="Pais"
+                              required
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Ocupación</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionOccupation"
+                              placeholder="Ocupación"
+                              required
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-md-3">
+                            <label
+                              for="exampleFormControlInput1"
+                              class="form-label"
+                              >Empresa</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control mb-1"
+                              id="companionCompany"
+                              placeholder="Empresa"
+                              required
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="row g-md-2">
+                            <div class="col-md-2">
+                              <button
+                                id="btnHabilitarAcompanante"
+                                class="btn btn-success mt-3"
+                              >
+                                Modificar
+                              </button>
+                            </div>
+                            <div class="col-md-2">
+                              <button
+                                id="btnAgregarAcompanante"
+                                class="btn btn-success mt-3"
+                                disabled="true"
+                              >
+                                Guardar
+                              </button>
+                            </div>
+
+                            <div class="col-md-2">
+                              <button
+                                id="btnActualizarAcompañante"
+                                class="btn btn-success mt-3"
+                                disabled="true"
+                              >
+                                Actualizar
+                              </button>
+                            </div>
+                            <div class="col-md-2">
+                              <button
+                                id="btnAsignarAcompañante"
+                                class="btn btn-success mt-3"
+                              >
+                                Agregar
+                              </button>
+                            </div>
+                          </div>
+                          <div id="mensajeActualizarAcompañante" style="display: none">
+                            <p>
+                              Se ha modificado la informacion del Acompañante
+                            </p>
+                          </div>
+                          <div id="mensajeGuardadoAcompañante" style="display: none">
+                            <p>
+                              Se ha guardado la informacion del Acompañante
+                            </p>
+                          </div>
+                          <hr />
+                          <br />
+                        </div>
+                      </div>
+                      <div class="col-md-5">
                         <label for="exampleFormControlInput1" class="form-label"
-                          >Email huesped</label
+                          >Establecimiento</label
                         >
                         <input
                           type="email"
                           class="form-control mb-1"
-                          id="hostEmail"
-                          placeholder="Email"
+                          id="place"
+                          placeholder="Escuela Hotel Sena"
                           disabled="true"
                         />
-                      </div>
-
-                      <div class="col-md-5">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Direccion de residencia</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostAddress"
-                          placeholder="Direccion"
-                          required
-                          disabled="true"
-                        />
-                      </div>
-
-                      <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Ciudad</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostCity"
-                          placeholder="Ciudad"
-                          required
-                          disabled="true"
-                        />
-                      </div>
-
-                      <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Pais</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostCountry"
-                          placeholder="Pais"
-                          required
-                          disabled="true"
-                        />
-                      </div>
-
-                      <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Ocupacion</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostOccupation"
-                          placeholder="Ocupación"
-                          required
-                          disabled="true"
-                        />
-                      </div>
-
-                      <div class="col-md-3">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Empresa</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="hostCompany"
-                          placeholder="Empresa"
-                          required
-                          disabled="true"
-                        />
-                      </div>
-
-                      <div class="row g-md-2">
-                        <div class="col-md-2">
-                          <button
-                            id="btnHabilitarEdicion"
-                            class="btn btn-success mt-3"
-                          >
-                            Modificar
-                          </button>
-                        </div>
-                        <div class="col-md-2">
-                          <button
-                            id="btnActualizarHuesped"
-                            class="btn btn-success mt-3"
-                            disabled="true"
-                          >
-                            Actualizar
-                          </button>
-                        </div>
-                      </div>
-                      <div id="mensajeHuesped" style="display: none">
-                        <p>Se ha modificado la informacion del huesped</p>
-                      </div>
-                      <br />
-                      <br />
-                      <hr />
-                      <div class="col-md-1">
-                        <label for="exampleFormControlInput1" class="form-label"
-                          >Numero de reserva</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control mb-1"
-                          id="numReserva"
-                          placeholder="00"
-                          required
-                          disabled="true"
-                        />
-                      </div>
-                      <div class="row g-md-2">
-                        <div class="col-md-3">
-                          <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
-                            >Fecha de entrada</label
-                          >
-                          <input
-                            type="date"
-                            class="form-control mb-3"
-                            id="entryDate"
-                            placeholder="name@example.com"
-                            disabled="true"
-                          />
-                        </div>
-
-                        <div class="col-md-3">
-                          <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
-                            >Fecha de salida</label
-                          >
-                          <input
-                            type="date"
-                            class="form-control mb-6"
-                            id="departureDate"
-                            placeholder="name@example.com"
-                            disabled="true"
-                          />
-                        </div>
-
-                        <div class="col-md-3">
-                          <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
-                            >Permanencia</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control mb-1"
-                            id="permanence"
-                            placeholder="Permanencia"
-                            required
-                            disabled="true"
-                          />
-                        </div>
-
-                        <div class="col-md-3">
-                          <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
-                            >Motivo de viaje</label
-                          >
-                          <input
-                            type="text"
-                            class="form-control mb-1"
-                            id="motive"
-                            placeholder="motivo"
-                          />
-                        </div>
-
-                        <div class="col-md-5">
-                          <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
-                            >Establecimiento</label
-                          >
-                          <input
-                            type="email"
-                            class="form-control mb-1"
-                            id="place"
-                            placeholder="Escuela Hotel Sena"
-                            disabled="true"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <button id="btnCheckIn" class="btn btn-success mt-3">
-                          Ingresar
-                        </button>
-                      </div>
-                      <!-- <div id="mensajeRegistro" style="display: none">
-                        <p>Se ha registrado al huesped</p>
-                      </div> -->
-
-                      <div
-                        id="mensajeRegistro"
-                        class="alert ocultar alert-danger animate__animated animate__fadeInDown"
-                        role="alert"
-                        style="display: none"
-                      >
-                        🧙‍♂️🤌 Se ha registrado al huesped exitosamente
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <button id="btnCheckIn" class="btn btn-success mt-3">
+                        Ingresar
+                      </button>
+                    </div>
+                    <div id="mensajeRegistro" style="display: none">
+                      <p>Se ha registrado al huésped</p>
+                    </div>
+
+                    <div
+                      id="mensajeRegistro"
+                      class="alert ocultar alert-danger animate__animated animate__fadeInDown"
+                      role="alert"
+                      style="display: none"
+                    >
+                      🧙‍♂️🤌 Se ha registrado al huésped exitósamente
+                    </div>
                   </div>
-                </section>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Cerrar
-                  </button>
                 </div>
+              </section>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
               </div>
             </div>
           </div>
+        </div>
 
           <nav aria-label="Page navigation example">
             <ul class="pagination">

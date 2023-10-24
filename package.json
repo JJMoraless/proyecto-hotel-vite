@@ -16,7 +16,9 @@
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
+    "datatables.net-dt": "^1.13.6",
     "date-fns": "^2.30.0",
-    "fullcalendar": "^6.1.9"
+    "fullcalendar": "^6.1.9",
+    "toastify-js": "^1.12.0"
   }
 }
