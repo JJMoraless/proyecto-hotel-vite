@@ -2,6 +2,11 @@
     DEMO STYLE
 */
 
+body {
+  overflow-x: hidden;
+  background: var(--grey) !important;
+}
+
 .blur {
   background-color: rgba(255, 255, 255, 0.651);
   backdrop-filter: blur(10px);
@@ -33,9 +38,6 @@ html {
   overflow-x: hidden;
 }
 
-body {
-  overflow-x: hidden;
-}
 
 main {
   background: var(--grey) !important;

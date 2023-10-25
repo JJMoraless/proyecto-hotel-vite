@@ -37,7 +37,7 @@ export const tableOfAlreadyConsumed = ({ reservation, registerId }) => {
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>val unid.</th>
+                <th>Val. unid.</th>
                 <th>Cant.</th>
                 <th>Total.</th>
               </tr>

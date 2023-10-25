@@ -55,10 +55,6 @@ const addConsumable = async (e = event) => {
     getRowsBodyConsumed({ products: productsConsumed, $table });
 
     const $bodyTableMinibar = $(`#body-consumables-${roomNumber}`);
-    console.log(
-      "🚀 ~ file: listOfRooms.jsx:64 ~ addConsumable ~ $bodyTableMinibar:",
-      $bodyTableMinibar
-    );
     const resProductsminibar = await hotelApi.get(
       `rooms/${roomNumber}/consumables`
     );
@@ -101,7 +97,7 @@ const loadProdudtcs = async (e) => {
     },
   });
   const products = resProducts.data.data.products;
-  
+
   $tableBodyProducts.innerHTML = "";
   products.forEach((itemProduct) => {
     const $tr = document.createElement("tr");
@@ -184,8 +180,6 @@ const addProductMinibar = async (e = event) => {
   const roomNumber = Number($("#modal-room").textContent);
   const productId = Number(e.target.closest("tr").id);
   const registerNumber = Number($("#modal-register").textContent);
-  console.log("🚀 ~ file: listOfRooms.jsx:187 ~ addProductMinibar ~ registerNumber:", registerNumber)
-  const registerId = Number(e.target.dataset.register);
 
   await hotelApi.post(`rooms/add-consumable`, {
     productId,
@@ -362,11 +356,12 @@ async function addPayment(e = event) {
   const amount = Number($cardTable.querySelector(".amoun-payment").value);
   const method = $cardTable.querySelector(".method-payment").value;
 
-  const res = await hotelApi.post(`registers/add-payment`, {
+  await hotelApi.post(`registers/add-payment`, {
     registerId,
     amount,
     method,
   });
+  
   buildTbodyPayments();
 }
 
@@ -402,7 +397,6 @@ const listOfRooms = async () => {
           <div class="accordion-body">
             ${cardInfoRoom({ ...room })}
             <div class="row">
-
               <div class="col-lg-4" id="table-consumables-${room.number}">
                 ${tableOfConsumables({
                   products,
@@ -410,7 +404,6 @@ const listOfRooms = async () => {
                   reservation,
                 })}
               </div>
-
               <div class="col-lg-4" id="table-consumed-${room.number}">
                 ${
                   !reservation?.register
@@ -436,6 +429,7 @@ const listOfRooms = async () => {
     `;
     $roomsInfo.appendChild($itemRoomInfo);
   });
+
   await Promise.all(roomsPromise);
   btnPorducts();
   buildTbodyPayments();
