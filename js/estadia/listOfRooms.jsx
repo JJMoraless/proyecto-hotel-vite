@@ -12,6 +12,7 @@ import {
 import { format } from "date-fns";
 const $roomsInfo = $("#acordion-rooms");
 
+// Productos monibar
 const reFillProductsMinibar = ({
   $bodyTableMinibar,
   productsMinibar,
@@ -22,6 +23,7 @@ const reFillProductsMinibar = ({
     products: productsMinibar,
     registerId,
   });
+  addConsumablesToRegister();
 };
 
 // Consumibles a registro
@@ -66,14 +68,18 @@ const addConsumable = async (e = event) => {
   }
 };
 
-const addConsumablesToRegister = () => {
+function addConsumablesToRegister() {
   const $btnAddConsumables = $$(".btn-add-consumable-checkIn");
+  console.log(
+    "🚀 ~ file: listOfRooms.jsx:73 ~ addConsumablesToRegister ~ $btnAddConsumables:",
+    $btnAddConsumables
+  );
   $btnAddConsumables.forEach((el) => {
     el.addEventListener("click", addConsumable);
   });
-};
+}
 
-const productsHandler = async (e = event) => {
+const productsHandlerAbastecer = async (e = event) => {
   const $roomNumber = $("#modal-room");
   const $registerNumber = $("#modal-register");
   const registerId = Number(e.target.dataset.register);
@@ -88,16 +94,14 @@ const productsHandler = async (e = event) => {
 
 // Products
 const loadProdudtcs = async (e) => {
-  // console.log(e.target)
-
   const $tableBodyProducts = document.querySelector("#body-products");
   const resProducts = await hotelApi.get("products", {
     params: {
       limit: 10000000,
     },
   });
-  
   const products = resProducts.data.data.products;
+  
   $tableBodyProducts.innerHTML = "";
   products.forEach((itemProduct) => {
     const $tr = document.createElement("tr");
@@ -174,11 +178,13 @@ const addProduct = async (e = event) => {
   loadProdudtcs();
 };
 
+// PRODUCTOS A MINIBAR
 const addProductMinibar = async (e = event) => {
   const amount = $("#amountProduct").value;
   const roomNumber = Number($("#modal-room").textContent);
   const productId = Number(e.target.closest("tr").id);
-  const $registerNumber = $("#modal-register");
+  const registerNumber = Number($("#modal-register").textContent);
+  console.log("🚀 ~ file: listOfRooms.jsx:187 ~ addProductMinibar ~ registerNumber:", registerNumber)
   const registerId = Number(e.target.dataset.register);
 
   await hotelApi.post(`rooms/add-consumable`, {
@@ -191,7 +197,8 @@ const addProductMinibar = async (e = event) => {
   const res = await hotelApi.get(`rooms/${roomNumber}/consumables`);
   const productsMinibar = res.data.data.room.products;
 
-  reFillProductsMinibar({ productsMinibar, registerId, $bodyTableMinibar });
+  reFillProductsMinibar({ productsMinibar, registerId: registerNumber, $bodyTableMinibar });
+  addConsumablesToRegister();
 };
 
 const deleteProduct = async (e = event) => {
@@ -250,21 +257,23 @@ const updateProduct = (e = event) => {
     const registerId = Number($("#modal-register").textContent);
     const productsMinibar = res.data.data.room.products;
     const $bodyTableMinibar = $(`#body-consumables-${roomNumber}`);
-    
+
     reFillProductsMinibar({ productsMinibar, registerId, $bodyTableMinibar });
+    addConsumablesToRegister();
   });
 };
 
 const btnPorducts = () => {
   const $btnsProducts = $$(".btn-abastecer");
   $btnsProducts.forEach((item) =>
-    item.addEventListener("click", productsHandler)
+    item.addEventListener("click", productsHandlerAbastecer)
   );
 };
 
 const buildTbodyPayments = () => {
   const tBodysPayments = $$(".tbody-payments");
 
+  tBodysPayments.forEach((tbody) => (tbody.innerHTML = ""));
   // Recorre los bodyb de tables
   tBodysPayments.forEach(async (itemTBody) => {
     const idRegister = Number(itemTBody.dataset.register);
@@ -278,7 +287,7 @@ const buildTbodyPayments = () => {
         <tr>
           <td>${paymentItem.amount}</td>
           <td>${paymentItem.method}</td>
-          <td>${format(new Date(paymentItem.createdAt), "MM/dd/yyyy" )}</td>
+          <td>${format(new Date(paymentItem.createdAt), "MM/dd/yyyy")}</td>
         </tr>
       `;
       itemTBody.appendChild($tr);
@@ -303,15 +312,16 @@ const tablePayments = ({ registerId }) => {
           </thead>
 
           <tbody data-register="${registerId}"  class="tbody-payments">
-
           </tbody>
+
         </table>
       </div>
+
       <div class="card-footer text-muted">
         <div class="row">
           <div class="col-md-6">
             <label class="form-label">tipo pago</label>
-            <select  class="form-select">
+            <select   class="form-select method-payment">
               <option value="efectivo">efectivo</option>
               <option value="debito">debito</option>
               <option value="credito">credito</option>
@@ -320,27 +330,52 @@ const tablePayments = ({ registerId }) => {
 
           <div class="col-md-6">
             <label class="form-label">cantidad</label>
-            <input class="form-control" type="number" />
+            <input class="form-control amoun-payment" type="number" />
           </div>
 
           <div class="col-md-12 mt-3 ">
               <button
                   type="button"
-                  class="btn btn-success w-100 btn-add-payment"
+                  class="btn btn-success w-100 btn-table-add-payment"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                 >
                 agregar a abono
               </button>
           </div>
-
-
-        </div>  
+        </div>
       </div>
     </div>
   `;
 
   return table;
 };
+
+async function addPayment(e = event) {
+  const $btnAddPayment = e.target;
+  const $cardTable = $btnAddPayment.closest(".card");
+  const $acordionBody = $btnAddPayment.closest(".accordion-body");
+
+  const registerId = Number(
+    $acordionBody.querySelector(".btn-abastecer").dataset.register
+  );
+
+  const amount = Number($cardTable.querySelector(".amoun-payment").value);
+  const method = $cardTable.querySelector(".method-payment").value;
+
+  const res = await hotelApi.post(`registers/add-payment`, {
+    registerId,
+    amount,
+    method,
+  });
+  buildTbodyPayments();
+}
+
+function addPaymentBtn() {
+  const $btnAddPayments = $$(".btn-table-add-payment");
+  $btnAddPayments.forEach((itemBtn) => {
+    itemBtn.addEventListener("click", addPayment);
+  });
+}
 
 const listOfRooms = async () => {
   const resRooms = await hotelApi.get("rooms");
@@ -394,8 +429,6 @@ const listOfRooms = async () => {
                     : tablePayments({ registerId: reservation?.register?.id })
                 }
               </div>
-             
-              
             </div>
           </div>
         </div>
@@ -403,12 +436,12 @@ const listOfRooms = async () => {
     `;
     $roomsInfo.appendChild($itemRoomInfo);
   });
-
   await Promise.all(roomsPromise);
-  fillBodyOfTablesConsumed();
-  addConsumablesToRegister();
   btnPorducts();
   buildTbodyPayments();
+  fillBodyOfTablesConsumed();
+  addConsumablesToRegister();
+  addPaymentBtn();
 };
 
 document.addEventListener("DOMContentLoaded", listOfRooms);

@@ -1,6 +1,7 @@
 
 
 export const productsOfTableConsumables = ({ products, registerId }) => {
+  console.log("🚀 ~ file: tableOfConsumables.jsx:4 ~ productsOfTableConsumables ~ registerId:", registerId)
   return /*html*/ `
     ${products
       .map((product) => {
