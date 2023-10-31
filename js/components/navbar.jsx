@@ -1,3 +1,4 @@
+import { hotelApi } from "../api";
 import { $ } from "../utils/functions";
 const $navbar = $("#navbar");
 
@@ -20,8 +21,21 @@ $navbar.innerHTML = /*html*/ `
             <a href="#"><i class="bx bxs-cog"></i>Settings</a>
         </li>
         <li>
-            <a href="login.html"><i class="bx bxs-log-out-circle"></i>Logout</a>
+            <a href="login.html" id="logOut"><i class="bx bxs-log-out-circle"></i>Logout</a>
         </li>
         </ul>
     </div>
 `;
+const $logOut = $("#logOut");
+
+$logOut.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    const url = e.target.href
+    window.location.href = url
+
+  
+
+    delete hotelApi.defaults.headers['Authorization']
+
+})

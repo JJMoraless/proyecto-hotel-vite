@@ -17,6 +17,12 @@
 </head>
 
 <body>
+  <script>
+    const token = localStorage.getItem("token")
+    if(!token) {
+      window.location.href = "login.html"
+    }
+  </script>
   <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
       <img

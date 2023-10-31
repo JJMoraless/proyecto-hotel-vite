@@ -1,7 +1,8 @@
-
-
 export const productsOfTableConsumables = ({ products, registerId }) => {
-  console.log("🚀 ~ file: tableOfConsumables.jsx:4 ~ productsOfTableConsumables ~ registerId:", registerId)
+  console.log(
+    "🚀 ~ file: tableOfConsumables.jsx:4 ~ productsOfTableConsumables ~ registerId:",
+    registerId
+  );
   return /*html*/ `
     ${products
       .map((product) => {
@@ -11,9 +12,7 @@ export const productsOfTableConsumables = ({ products, registerId }) => {
               ${product.name}
               <br />
               <span class="text-muted ">
-              <span class="badge text-bg-success rounded-pill"
-                >Cant: #${product.Inventary.amount}</span>
-              </span>
+            
             </td>
             <td>$${product.price}</td>
             <td>
@@ -78,7 +77,7 @@ export const tableOfConsumables = ({
               data-roomId="${roomNumber}"
               data-register="${registerId}"
               style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-              abastecer
+              agregar consumible
             </button>
           </div>
         </div>

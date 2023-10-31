@@ -176,7 +176,7 @@ const addProduct = async (e = event) => {
 
 // PRODUCTOS A MINIBAR
 const addProductMinibar = async (e = event) => {
-  const amount = $("#amountProduct").value;
+  // const amount = $("#amountProduct").value;
   const roomNumber = Number($("#modal-room").textContent);
   const productId = Number(e.target.closest("tr").id);
   const registerNumber = Number($("#modal-register").textContent);
@@ -184,7 +184,7 @@ const addProductMinibar = async (e = event) => {
   await hotelApi.post(`rooms/add-consumable`, {
     productId,
     roomNumber,
-    amount,
+    // amount,
   });
 
   const $bodyTableMinibar = $(`#body-consumables-${roomNumber}`);

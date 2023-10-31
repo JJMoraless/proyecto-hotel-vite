@@ -11,6 +11,9 @@ body {
   background-color: rgba(255, 255, 255, 0.651);
   backdrop-filter: blur(10px);
 }
+.short-inter {
+  line-height: 0.5;
+}
 
 /* Sidebar styles */
 

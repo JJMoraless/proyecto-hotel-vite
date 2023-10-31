@@ -27,10 +27,17 @@
     <!-- End Bootstrap -->
 
     <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/components/index.js " defer type="module"></script>
     <script type="module" src="./js/index/calendar.js"></script>
+    <script src="./js/components/index.js"  type="module"></script>
   </head>
   <body>
+    <script>
+      const token = localStorage.getItem("token")
+      if(!token) {
+        window.location.href = "login.html"
+      }
+    </script>
+    
     <section id="sidebar" class="hide shadow-lg"></section>
     <section id="content">
       <nav id="navbar" class="blur fixed-top border-bottom"></nav>

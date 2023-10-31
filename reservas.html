@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/main.jsx"></script>
     <!-- Icons -->
     <link
       href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
@@ -39,12 +39,18 @@
     <script src="./js/components/index.js " defer type="module"></script>
   </head>
   <body>
-    <section id="sidebar" class="hide shadow-lg "></section>
+    <script>
+      const token = localStorage.getItem("token")
+      if(!token) {
+        window.location.href = "login.html"
+      }
+    </script>
+    <section id="sidebar" class="hide shadow-lg"></section>
 
     <section id="content">
       <main class="reservas">
-        <nav id="navbar" class="blur fixed-top border-bottom "></nav>
-        
+        <nav id="navbar" class="blur fixed-top border-bottom"></nav>
+
         <div class="pt-3">
           <h2 class="pt-5">Haz reservas</h2>
 
@@ -234,7 +240,7 @@
         </div>
 
         <div
-          class="modal fade"
+          class="modal fade modal-lg"
           id="eventModal"
           tabindex="-1"
           role="dialog"
@@ -251,6 +257,7 @@
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
+
               </div>
               <div class="modal-body" id="eventModalBody"></div>
             </div>

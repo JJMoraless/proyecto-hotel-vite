@@ -32,6 +32,12 @@
     <title>AdminSite</title>
   </head>
   <body>
+    <script>
+      const token = localStorage.getItem("token")
+      if(!token) {
+        window.location.href = "login.html"
+      }
+    </script>
     <section id="sidebar"></section>
     <section id="content">
       <nav id="navbar"></nav>
