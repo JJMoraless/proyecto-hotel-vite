@@ -8,8 +8,7 @@
     <!-- Icons -->
     <link
       href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <!-- End Icons -->
 
     <!-- Bootstrap -->
@@ -17,32 +16,30 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <!-- End Bootstrap -->
 
     <!-- Animates -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- End animates -->
 
     <!-- Styles -->
     <link rel="stylesheet" href="./css/styles.css" />
+
     <script src="./js/components/index.js " defer type="module"></script>
   </head>
   <body>
     <script>
-      const token = localStorage.getItem("token")
-      if(!token) {
-        window.location.href = "login.html"
+      const token = localStorage.getItem('token')
+      if (!token) {
+        window.location.href = 'login.html'
       }
     </script>
     <section id="sidebar" class="hide shadow-lg"></section>
@@ -68,8 +65,7 @@
                   type="number"
                   class="form-control mb-1"
                   id="document"
-                  placeholder="212312312312"
-                />
+                  placeholder="212312312312" />
               </div>
 
               <div class="col-md-3">
@@ -80,8 +76,7 @@
                   class="form-control mb-1"
                   id="name"
                   placeholder="nombre huesped"
-                  required
-                />
+                  required />
               </div>
 
               <div class="col-md-5">
@@ -91,8 +86,7 @@
                   type="email"
                   class="form-control mb-1"
                   id="email"
-                  placeholder="name@example.com"
-                />
+                  placeholder="name@example.com" />
               </div>
 
               <div class="col-md-4">
@@ -104,13 +98,15 @@
                   type="number"
                   class="form-control mb-1"
                   id="numberPhone"
-                  placeholder="name@example.com"
-                />
+                  placeholder="name@example.com" />
               </div>
 
               <div class="col-md-12 mb-5 mt-4">
                 <button id="btnSaveHost" class="btn btn-success">
                   Guardar huesped
+                  
+
+                 
                 </button>
 
                 <button id="btn-find-host" class="btn btn-success">
@@ -126,8 +122,7 @@
 
             <div
               class="row-md-4 col-md-3 shadow-lg border rounded bg-body pt-5"
-              role="alert"
-            >
+              role="alert">
               <div class="row">
                 <div class="col-md-12">
                   <label for="dateEntry" class="form-label"
@@ -138,8 +133,7 @@
                     type="date"
                     class="form-control mb-3"
                     id="dateEntry"
-                    placeholder="name@example.com"
-                  />
+                    placeholder="name@example.com" />
                 </div>
 
                 <div class="col-md-12">
@@ -151,8 +145,7 @@
                     type="date"
                     class="form-control mb-6"
                     id="dateOutput"
-                    placeholder="name@example.com"
-                  />
+                    placeholder="name@example.com" />
                 </div>
               </div>
 
@@ -164,8 +157,7 @@
                   <select
                     id="rooms-select"
                     class="form-select"
-                    name="roomNumber"
-                  ></select>
+                    name="roomNumber"></select>
                 </div>
 
                 <div class="col-md-6">
@@ -177,8 +169,7 @@
                     id="numAdults"
                     name="numAdults"
                     placeholder="0"
-                    value="0"
-                  />
+                    value="0" />
                 </div>
 
                 <div class="col-md-6">
@@ -192,32 +183,28 @@
                     id="numChildrens"
                     name="numChildrens"
                     placeholder="0"
-                    value="0"
-                  />
+                    value="0" />
                 </div>
               </div>
 
               <div
                 id="errorAlert"
                 class="alert ocultar alert-danger animate__animated animate__fadeInDown"
-                role="alert"
-              >
+                role="alert">
                 💀 Error fecha de salida debe ser mas grande que entrada
               </div>
 
               <div
                 id="errorAlertHost"
                 class="alert ocultar alert-danger animate__animated animate__fadeInDown"
-                role="alert"
-              >
+                role="alert">
                 💀 documento del huesped no se ha guardado o no lo ingreso
               </div>
 
               <div
                 id="errorAlertDates"
                 class="alert ocultar alert-danger animate__animated animate__fadeInDown"
-                role="alert"
-              >
+                role="alert">
                 💀 debes ingresar fecha de ingreso y salida
               </div>
 
@@ -231,8 +218,7 @@
             <div class="col-md-9 fechas">
               <div
                 class="p-3 bg-body border rounded shadow-lg"
-                id="calendar"
-              ></div>
+                id="calendar"></div>
             </div>
 
             <!-- <hr /> -->
@@ -245,8 +231,7 @@
           tabindex="-1"
           role="dialog"
           aria-labelledby="eventModalLabel"
-          aria-hidden="true"
-        >
+          aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -255,14 +240,9 @@
                   type="button"
                   class="btn-close"
                   data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-
+                  aria-label="Close"></button>
               </div>
-              <div class="modal-body" id="eventModalBody">
-                
-              </div>
-              
+              <div class="modal-body" id="eventModalBody"></div>
             </div>
           </div>
         </div>

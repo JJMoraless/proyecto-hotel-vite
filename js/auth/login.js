@@ -4,10 +4,9 @@ const baseUrl = "http://localhost:5173";
  * @param {string} selector - Selector CSS para el elemento a seleccionar.
  * @returns {HTMLElement | null} - El elemento seleccionado o null si no se encontró ningún elemento.
  */
+const $ = (element) => document.querySelector(element);
 
 import { hotelApi } from "../api";
-
-const $ = (element) => document.querySelector(element);
 const $btnIniciar = $("#btn-iniciar");
 
 $btnIniciar.addEventListener("click", async (e = event) => {
