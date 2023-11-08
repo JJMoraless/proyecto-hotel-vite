@@ -1,5 +1,5 @@
-import {hotelApi} from '../api'
-import {$} from '../utils/functions'
+import { hotelApi } from '../api'
+import { $ } from '../utils/functions'
 const $navbar = $('#navbar')
 
 $navbar.innerHTML = /*html*/ `
@@ -15,12 +15,6 @@ $navbar.innerHTML = /*html*/ `
         />
         <ul class="profile-link">
             <li>
-                <a href="#"><i class="bx bxs-user-circle icon"></i>Profile</a>
-            </li>
-            <li>
-                <a href="#"><i class="bx bxs-cog"></i>Settings</a>
-            </li>
-            <li>
                 <a href="login.html" id="logOut"><i class="bx bxs-log-out-circle"></i>Logout</a>
             </li>
         </ul>
@@ -29,10 +23,33 @@ $navbar.innerHTML = /*html*/ `
 const $logOut = $('#logOut')
 
 $logOut.addEventListener('click', (e) => {
-  e.preventDefault()
-
-  localStorage.clear()
-  const url = e.target.href
-  window.location.href = url
-  delete hotelApi.defaults.headers['Authorization']
+    e.preventDefault()
+    assistanceLogOut();
+    vaciar();
+    const url = e.target.href
+    window.location.href = url
+    delete hotelApi.defaults.headers['Authorization']
 })
+
+const assistanceLogOut = async () => {
+    const id = localStorage.getItem("assistanceId");
+    const now = new Date();
+    const logoutDate = now.toISOString();
+    const dataAssistance = {logoutDate};
+    try {
+        const response = await hotelApi.put(`assistance/${id}`, dataAssistance);
+        if (response.status === 200) {
+            alert("parece ser que funionó");
+        } else {
+            console.log("Hubo un error al cerrar sesion");
+        }
+    } catch (error) {
+        console.error("No es posible cerrar sesion en este momento: "+error);
+    }
+}
+
+function vaciar(){
+    localStorage.removeItem("assistanceId");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+}
