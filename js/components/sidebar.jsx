@@ -30,6 +30,10 @@ $sidebar.innerHTML = /*html*/ `
     <li>
       <a href="aprendices.html"><i class="bx bxs-widget icon"></i>aprendices</a>
     </li>
+
+    <li>
+      <a href="Asistencia.html"><i class="bx bxs-widget icon"></i>asistencia</a>
+    </li>
  
   </ul>
 `;

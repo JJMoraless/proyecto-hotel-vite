@@ -89,7 +89,9 @@ const getReservations = async () => {
         
             <ul class="list-group list-group-fechas list-group-item-action">
               <li class="list-group-item room">
-                <b> habitacion: ${el.roomNumber} </b>
+                <b> habitacion:  <span class="room-number">${
+                  el.roomNumber
+                }</span></b>
               </li>
 
               <li class="list-group-item entrada">
@@ -157,11 +159,9 @@ const editReserva = (calendar) => {
 
   $btnNote.addEventListener('click', async (e = event) => {
     const txtNoteUpdated = $companionsArea.value
-
     const $alertEditNote = $('.alerta-edit-note')
     try {
       $alertEditNote.classList.remove('ocultar')
-
       const response = await hotelApi.put(`reservations/${idReservation}`, {
         note: txtNoteUpdated,
       })
@@ -185,33 +185,39 @@ const editReserva = (calendar) => {
 
   $btnEditReservation.addEventListener('click', (e = event) => {
     const $reservation = $bodytarget.querySelector('.list-group-fechas')
+
     const $salida = $reservation.querySelector('.salida')
     const $entrada = $reservation.querySelector('.entrada')
     const $room = $reservation.querySelector('.room')
     const $btnGuardar = $reservation.querySelector('.btn-guardar')
     const $alerta = $bodytarget.querySelector('.alerta-fecha-editar')
     const $alertaGreen = $bodytarget.querySelector('.alerta-gree-fecha-editar')
+    const $roomNumber = $reservation.querySelector('.room-number')
+    const currentRoom = parseInt($roomNumber.textContent)
 
     const fechaSalida = $salida
       .querySelector('.fecha')
       .textContent.trim()
       .replace('/', '-')
       .replace('/', '-')
+
     const fechaEntrada = $entrada
       .querySelector('.fecha')
       .textContent.trim()
       .replace('/', '-')
       .replace('/', '-')
 
+    // no habia tiempo por eso lo deje local
+    const rooms = [501, 502, 503]
+
     $room.innerHTML = /*html*/ `
       <p>habitacion: </p>
-      <select class="form-select" aria-label="Default select example">
-
-      
-        <option selected>Open this select menu</option>
-        <option value="1">501</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <select class="form-select room-input" aria-label="Default select example">
+        <option selected value="${currentRoom}">${currentRoom}</option>
+        ${rooms
+          .filter((el) => el !== currentRoom)
+          .map((el) => /*html*/ `<option value="${el}">${el}</option>`)
+          .join()}
       </select>
     `
 
@@ -246,6 +252,10 @@ const editReserva = (calendar) => {
       const salida = new Date($reservation.querySelector('.salida-save').value)
       salida.setHours(salida.getHours() + 23, 59, 0, 0)
 
+      const roomSelected = parseInt(
+        $reservation.querySelector('.room-input').value,
+      )
+
       // animacion alerta de error
       if (entrada > salida) {
         $alerta.classList.remove('ocultar')
@@ -264,10 +274,13 @@ const editReserva = (calendar) => {
       // alerta de exito
       try {
         $alertaGreen.classList.remove('ocultar')
+
         await hotelApi.put(`reservations/${idReservation}`, {
+          roomNumber: roomSelected,
           dateEntry: entrada,
           dateOutput: salida,
         })
+
         setTimeout(() => {
           $alertaGreen.classList.remove('animate__fadeInDown')
           $alertaGreen.classList.add('animate__backOutLeft')

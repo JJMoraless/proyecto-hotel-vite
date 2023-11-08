@@ -136,13 +136,96 @@
                   class="btn btn-danger"
                   data-bs-dismiss="modal">
                   Close
-                  
                 </button>
               </div>
             </div>
           </div>
         </div>
         <!--End Modal -->
+
+        <!-- Button trigger modal -->
+
+        <!-- Modal Factura -->
+        <div
+          class="modal fade modal-xl"
+          id="modalFactura"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Comprobante de pago registro # <span id="modal-register-factura"></span>
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <!-- Datos cliente -->
+                  <div class="col-md-6">
+                    <div class="card shadow-sm mb-3">
+                      <div class="card-body table-consumbales">
+                        <h5>Cliente responsable</h5>
+                        <!-- se llena desde javascript -->
+                        <div class="datos-huesped"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Datos estadia -->
+                  <div class="col-md-6 mb-3">
+                    <div class="card shadow-sm">
+                      <div class="card-body">
+                        <h5>Datos estadia</h5>
+                        <!--javascript -->
+                        <div class="datos-estadia"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-7">
+                    <div class="card shadow-sm">
+                      <div class="card-body">
+                        <h5>consumos y reserva</h5>
+                        <!--javascript -->
+                        <div class="datos-factura row"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-5">
+                    <div class="card shadow-sm">
+                      <div class="card-body">
+                        <h5>Abonos</h5>
+                        <!-- se llena desde javascript -->
+                        <div class="datos-abonos"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                type="button"
+                class="btn btn-success btn-facturar-pdf">
+                generar pdf
+              </button>
+
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal">
+                  cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </section>
   </body>

@@ -19,6 +19,7 @@
     "datatables.net-dt": "^1.13.6",
     "date-fns": "^2.30.0",
     "fullcalendar": "^6.1.9",
+    "jspdf": "^2.5.1",
     "toastify-js": "^1.12.0"
   }
 }

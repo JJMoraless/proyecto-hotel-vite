@@ -1,189 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistencia</title>
 
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asistencia</title>
+  <script src="./js/asistencia/asistencia.js" type="module"></script>
+  
+  <!-- Icons -->
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <!-- End Icons -->
 
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="./js/components/index.js" type="module"></script>
 
-  <body>
-    <script>
-      const token = localStorage.getItem("token")
-      if(!token) {
-        window.location.href = "login.html"
-      }
-    </script>
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <img
-          src="./public/img/logo_hotel-removebg-preview.png"
-          alt=""
-          height="50px"
-        />
-        <a class="navbar-brand" href="#">Software dream</a>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasDarkNavbar"
-          aria-controls="offcanvasDarkNavbar"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="offcanvas offcanvas-end text-bg-dark"
-          tabindex="1"
-          id="offcanvasDarkNavbar"
-          aria-labelledby="offcanvasDarkNavbarLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
-              Software Dream
-              <img
-                src="./public/img/logo_hotel-removebg-preview.png"
-                alt=""
-                height="50px"
-              />
-            </h5>
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item ">
-                <a
-                  class="nav-link "
-                  href="./index.html"
-                  >Home</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="./reservas.html"
-                  >Reservar</a
-                >
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./checkIn.html">Check-In</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./estadia.html">Estadia</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./inventario.html">Inventario</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./aprendices.html">Aprendices</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./consolidado.html">Consolidado</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="./inventario.html">Inventario</a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link active" href="./Asistencia.html">Asistencia</a>
-              </li>
-
-              <li class="nav-item ">
-                <a class="nav-link " href="./minibar.html">Minibar</a>
-              </li>
-
-              
-
-              <hr />
-
-              <li class="nav-item btn btn-danger">
-                <a class="nav-link" href="./login.html">Salir</a>
-              </li>
-            </ul>
-          </div>
+<body>  
+  <script>
+  const token = localStorage.getItem("token")
+  if (!token) {
+    window.location.href = "login.html"
+  }
+</script>
+  <section id="sidebar" class="hide shadow-lg "></section>
+  <section id="content">
+    <nav id="navbar" class="blur fixed-top border-bottom"></nav>
+    <main>
+      <section class="reservas pb-5">
+        <div class="container pb-5">
+          <h2 class="pt-5">Lista de asistencia</h2>
+          <hr />
         </div>
-      </div>
-    </nav>
-
-    <section class="asistencia pt-5">
-      <h1>Lista de Asistencia</h1>
-      <div id="attendanceList">
-        <table>
-          <tr>
-            <th>Nombre del Estudiante</th>
-            <th>Asistencia</th>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="Nombre del Estudiante 1" /></td>
-            <td><input type="checkbox" /></td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="Nombre del Estudiante 2" /></td>
-            <td><input type="checkbox" /></td>
-          </tr>
-          <!-- se agregan las filas ue hagan falta (no se si se agregan desde base de datos, no sé hacerlo) -->
-        </table>
-        <button onclick="guardarAsistencia()">Guardar Asistencia</button>
-      </div>
-    </section>
-  </body>
+        <div class="table-responsive p-5 bg-body border rounded ">
+          <table class="table " id="dataTable" width="ml-auto" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Ficha</th>
+                <th>Fecha</th>
+                <th>Ingreso</th>
+                <th>Salida</th>
+                <th>Duración</th>
+              </tr>
+            </thead>
+            <tbody id="table-body-assistance"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </section>
+</body>
 </html>
-
-<!-- HAY QUE PONERLO EN JS PERO NO SABIA DONDE -->
-<!-- function guardarAsistencia() {
-    // Declara una matriz para almacenar la asistencia
-var asistenciaData = [];
-
-// Obtén la tabla de asistencia por su ID
-var table = document.querySelector("#attendanceList table");
-
-// Encuentra todas las filas de la tabla, excepto la primera (encabezado)
-var filas = table.querySelectorAll("tr:not(:first-child)");
-
-// Recorre todas las filas de estudiantes
-filas.forEach(function(fila) {
-    var nombre = fila.querySelector("input[type='text']").value;
-    var asistencia = fila.querySelector("input[type='checkbox']").checked;
-
-    // Crea un objeto que representa la asistencia de un estudiante
-    var asistenciaEstudiante = {
-        nombre: nombre,
-        asistencia: asistencia
-    };
-
-    // Agrega el objeto de asistencia a la matriz
-    asistenciaData.push(asistenciaEstudiante);
-});
-
-// se puede hacer una accion como enviarla a un servidor usando una solicitud AJAX, pero es opcional
-
-// Muestra la matriz en la consola (solo para fines de demostración)
-console.log(asistenciaData);
-
-    alert("Asistencia guardada correctamente.");
-} -->

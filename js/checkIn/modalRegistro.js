@@ -1,5 +1,5 @@
 import { hotelApi } from "../api";
-import { getReservationsCheckIn } from "./reservas";
+import { getReservationsCheckIn } from "./getReservas";
 
 let registerId;
 
@@ -21,6 +21,8 @@ function openReservationModal(reservationId) {
     const mensajeGuardadoAcompañante = (document.getElementById(
       "mensajeGuardadoAcompañante"
     ).style.display = "none");
+    const acompañante = (document.getElementById("btnAcompañante")
+    .style.display = "none")
     try {
       const response = await hotelApi.get(`reservations/${reservationId}`);
       const reservation = response.data.data.reservation || null;
@@ -66,6 +68,8 @@ function openReservationModal(reservationId) {
 
         // Establecer el valor del campo "Permanencia" con el número de noches
         document.getElementById("permanence").value = nights.toString();
+        document.getElementById("note").value =
+          reservation.note || "";
       } else {
         console.log("Reserva no encontrada");
       }
@@ -252,6 +256,9 @@ document.getElementById("btnCheckIn").addEventListener("click", async () => {
         const mensajeRegistro = (document.getElementById(
           "mensajeRegistro"
         ).style.display = "block");
+        //acompañante
+            const acompañante = (document.getElementById("btnAcompañante")
+            .style.display = "block")
         getReservationsCheckIn();
       } else {
         console.log("Error en la solicitud POST");

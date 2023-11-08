@@ -15,6 +15,8 @@ $btnIniciar.addEventListener("click", async (e = event) => {
   try {
     const authRes = await hotelApi.post("/auth/login", formData);
     const { token, user } = authRes.data.data;
+    const assistanceId = authRes.data.data.asistance.id;
+    localStorage.setItem("assistanceId", assistanceId);
     localStorage.setItem("token", token);
     localStorage.setItem("user", JSON.stringify(user));
     window.location.href = `${baseUrl}/index.html`;
