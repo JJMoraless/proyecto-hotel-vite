@@ -27,11 +27,11 @@ $btnFactura.addEventListener('click', (e) => {
       scale: 0.5,
     },
     callback: (doc) => {
-      const totalPages = doc.internal.getNumberOfPages();
-      
+      const totalPages = doc.internal.getNumberOfPages()
+
       // Elimina todas las páginas excepto la primera
       for (let i = totalPages; i > 1; i--) {
-        doc.deletePage(i);
+        doc.deletePage(i)
       }
       doc.output('dataurlnewwindow', {filename: 'factura.pdf'})
     },
@@ -384,11 +384,16 @@ async function addPayment(e = event) {
   const amount = Number($cardTable.querySelector('.amoun-payment').value)
   const method = $cardTable.querySelector('.method-payment').value
 
-  await hotelApi.post(`registers/add-payment`, {
+  const resPayment = await hotelApi.post(`registers/add-payment`, {
     registerId,
     amount,
     method,
   })
+
+  console.log(
+    '🚀 ~ file: listOfRooms.jsx:389 ~ addPayment ~ resPayment:',
+    resPayment,
+  )
 
   buildTbodyPayments()
 }
@@ -444,8 +449,9 @@ const loadBill = async ({$element, registerId}) => {
   let totalStay = days * registerRate * numberGuestsByRoom
   let totalBrute = totalStay + totalProducts
   let discount = register.discount
+
   if (discount > 0) {
-    discount = (discount / 100) * totalBrute
+    discount = (discount / 100) * totalStay
   }
 
   $element.innerHTML = /*html*/ `
