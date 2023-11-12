@@ -140,7 +140,7 @@ const loadProdudtcs = async (e) => {
             --bs-btn-padding-y: 0.25rem;
             --bs-btn-padding-x: 0.5rem;
             --bs-btn-font-size: 0.75rem;">
-            aditar
+            editar
         </button>
 
         <button
@@ -361,7 +361,7 @@ const tablePayments = ({registerId}) => {
                   class="btn btn-success w-100 btn-table-add-payment"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                 >
-                agregar a abono
+                agregar  abono
               </button>
           </div>
         </div>
@@ -415,7 +415,7 @@ const cardBill = ({registerId}) => {
         data-registerId ="${registerId}"
         data-bs-toggle="modal"
         data-bs-target="#modalFactura">
-        comprobar
+        imprimir
       </button>
     </div>
   `

@@ -43,12 +43,17 @@ const fillRooms = async (e = event) => {
 
 const guardarHuesped = async (e = event) => {
   e.preventDefault()
-  const {document, ...dataForm} = Object.fromEntries(new FormData($formHuesped))
-
-  await hotelApi.post('host', {
-    ...dataForm,
-    document: document.toString(),
-  })
+  try {
+    const {document, ...dataForm} = Object.fromEntries(
+      new FormData($formHuesped),
+    )
+    await hotelApi.post('host', {
+      ...dataForm,
+      document: document.toString(),
+    })
+  } catch (error) {
+    alert('error usuario no guardado, ingrese todos los campos')
+  }
 }
 
 const errorAlert = $('#errorAlert')
@@ -77,6 +82,16 @@ export const reservar = async () => {
   exitDate.setHours(exitDate.getHours() + 23, 59, 0, 0)
 
   try {
+    console.log({
+      ...dataReservation,
+      numChildrens: Number(numChildrens),
+      numAdults: Number(numAdults),
+      roomNumber: Number(roomNumber),
+      hostDocument: document.toString(),
+      userId: 1,
+      dateOutput: exitDate,
+    });
+    
     const res = await hotelApi.post('/reservations', {
       ...dataReservation,
       numChildrens: Number(numChildrens),

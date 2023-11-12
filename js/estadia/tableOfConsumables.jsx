@@ -1,8 +1,4 @@
 export const productsOfTableConsumables = ({products, registerId}) => {
-  console.log(
-    '🚀 ~ file: tableOfConsumables.jsx:4 ~ productsOfTableConsumables ~ registerId:',
-    registerId,
-  )
   return /*html*/ `
     ${products
       .map((product) => {
@@ -12,18 +8,20 @@ export const productsOfTableConsumables = ({products, registerId}) => {
               ${product.name}
               <br />
               <span class="text-muted ">
-            
             </td>
             <td>$${product.price}</td>
             <td>
+            <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
               <button
                 id="${registerId}"
                 type="button"
                 class="btn btn-success btn-add-consumable-checkIn"
                 style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover"
               >
                 agregar a huesped
               </button>
+            </span>
             </td>
           </tr>
       `
@@ -75,7 +73,7 @@ export const tableOfConsumables = ({
               data-roomId="${roomNumber}"
               data-register="${registerId}"
               style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-              agregar consumible
+              Modificar consumible
             </button>
           </div>
         </div>
