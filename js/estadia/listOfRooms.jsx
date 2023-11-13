@@ -10,6 +10,11 @@ import {
   tableOfConsumables,
 } from '.'
 import {format} from 'date-fns'
+
+/* -------------------------------------------------------------------------- */
+/*                                 Facturacion                                */
+/* -------------------------------------------------------------------------- */
+
 import jsPDF from 'jspdf'
 const $roomsInfo = $('#acordion-rooms')
 const $btnFactura = $('.btn-facturar-pdf')
@@ -520,7 +525,12 @@ const loadStayData = async ({$element, registerId}) => {
       ? register.executivePrice
       : register.regularPrice
 
+
   const registerRateName = register.priceSelected || 'Regular'
+  console.log(
+    '🚀 ~ file: listOfRooms.jsx:529 ~ loadStayData ~ registerRateName:',
+    registerRateName,
+  )
   const discount = register.discount || 0
 
   $element.innerHTML = /*html*/ `
@@ -624,10 +634,6 @@ const getBill = () => {
 const editTarifaAndDiscount = () => {
   const selectTarifas = $$('.tarifas-select')
   const inputDiscount = $$('.discount')
-  console.log(
-    '🚀 ~ file: listOfRooms.jsx:595 ~ editTarifaAndDiscount ~ inputDiscount:',
-    inputDiscount,
-  )
 
   selectTarifas.forEach(async (el) => {
     const $body = el.closest('.accordion-body')
@@ -635,13 +641,13 @@ const editTarifaAndDiscount = () => {
     const registerId = parseInt($btnRegisterId.dataset.register)
 
     el.addEventListener('change', async () => {
+      console.log('editar tarifa evento activadoooooooooooooooooooooooo')
       const tarifa = el.value
-
-      if (registerId) {
-        await hotelApi.put(`registers/${registerId}`, {
-          priceSelected: tarifa,
-        })
-      }
+      const resRateEdited = await hotelApi.put(`registers/${registerId}`, {
+        priceSelected: tarifa,
+      })
+      console.log({resRateEdited})
+      console.log({registerId})
     })
   })
 
