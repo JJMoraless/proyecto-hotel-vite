@@ -424,7 +424,8 @@ const cardBill = ({registerId}) => {
         class="btn btn-success btn-factura"
         data-registerId ="${registerId}"
         data-bs-toggle="modal"
-        data-bs-target="#modalFactura">
+        data-bs-target="#modalFactura"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
         imprimir
       </button>
     </div>
@@ -524,7 +525,6 @@ const loadStayData = async ({$element, registerId}) => {
     register.priceSelected === 'ejecutivo'
       ? register.executivePrice
       : register.regularPrice
-
 
   const registerRateName = register.priceSelected || 'Regular'
   console.log(

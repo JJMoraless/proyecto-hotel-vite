@@ -49,6 +49,7 @@ export const cardInfoRoom = ({description, reservations = []}) => {
             <div class="mb-3">
               <label>Tarifas</label>
               <select class="form-select mb-2 tarifas-select">
+              <option value="regular">seleccione</option>
                 <option value="ejecutivo">ejecutivo</option>
                 <option value="regular">regular</option>
               </select>
