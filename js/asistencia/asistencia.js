@@ -13,7 +13,7 @@ const formatTime = (dateTimeString) => {
         const horaColombia = fechaHora.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
         return horaColombia;
     } else {
-        return ""; // O cualquier otro valor por defecto que desees
+        return "";
     }
 };
 

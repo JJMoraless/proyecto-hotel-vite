@@ -1,4 +1,4 @@
-import {$} from '../utils/functions'
+import { $ } from '../utils/functions'
 
 const $sidebar = $('#sidebar')
 
@@ -28,11 +28,15 @@ $sidebar.innerHTML = /*html*/ `
     </li>
 
     <li>
-      <a href="aprendices.html"><i class="bx bxs-user-check icon"></i>Aprendices</a>
+      <a href="tareas.html"><i class="bx bxs-check-square  icon"></i>Tareas</a>
     </li>
 
     <li>
       <a href="Asistencia.html"><i class="bx bxs-time  icon"></i>Asistencia</a>
+    </li>
+
+    <li>
+      <a href="administracion.html"><i class="bx bxs-chart  icon"></i>Administracion</a>
     </li>
   </ul>
 `

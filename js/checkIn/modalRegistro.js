@@ -16,7 +16,7 @@ function openReservationModal(reservationId) {
       "divAcompañante"
     ).style.display = "none");
     const mensajeActualizarAcompañante = (document.getElementById(
-      "mensajeGuardadoAcompañante"
+      "mensajeActualizarAcompañante"
     ).style.display = "none");
     const mensajeGuardadoAcompañante = (document.getElementById(
       "mensajeGuardadoAcompañante"
@@ -233,7 +233,7 @@ document
 document.getElementById("btnCheckIn").addEventListener("click", async () => {
   const reservationIdString = document.getElementById("numReserva").value;
   const reservationId = parseInt(reservationIdString, 10);
-  const userId = 1; // userID temporal
+  const userId = 1; // userID temporal 
   const travel_reason = document.getElementById("motive").value;
   if (travel_reason.trim() === "") {
     alert("elmotivo de viaje es obligatorio");
@@ -587,6 +587,9 @@ document.getElementById("btnAsignarAcompañante")
       });
       if (response) {
         console.log("Acompañante asignado con exito");
+        const mensajeAsignarAcompañante = (document.getElementById(
+          "asignarAcompañante"
+        ).style.display = "block");
       } else {
         console.log("Error al asignar el acompañante");
       }

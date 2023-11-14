@@ -749,3 +749,45 @@ h1 {
 .table-min-h {
   max-height: 200px;
 }
+
+/* Estilo para el contenedor de notas */
+#editor-container {
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+/* Estilo para los textarea dentro de #editor-container */
+#editor-container .noteText {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: auto;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilo para el textarea cuando está enfocado */
+#editor-container .noteText:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+.custom-card {
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  background-color: lightgray; 
+  border-color: darkgray;
+  border: 2px solid;
+}
+
+.custom-card:hover {
+  background-color: lightblue;
+}
