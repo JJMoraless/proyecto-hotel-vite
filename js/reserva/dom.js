@@ -47,12 +47,14 @@ const guardarHuesped = async (e = event) => {
     const {document, ...dataForm} = Object.fromEntries(
       new FormData($formHuesped),
     )
+
     await hotelApi.post('host', {
       ...dataForm,
       document: document.toString(),
     })
+    alert('usuario guardado con exito')
   } catch (error) {
-    alert('error usuario no guardado, ingrese todos los campos')
+    alert('!Error al registrar usuario¡')
   }
 }
 
@@ -90,8 +92,8 @@ export const reservar = async () => {
       hostDocument: document.toString(),
       userId: 1,
       dateOutput: exitDate,
-    });
-    
+    })
+
     const res = await hotelApi.post('/reservations', {
       ...dataReservation,
       numChildrens: Number(numChildrens),

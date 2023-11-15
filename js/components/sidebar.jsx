@@ -1,4 +1,4 @@
-import { $ } from '../utils/functions'
+import {$} from '../utils/functions'
 
 const $sidebar = $('#sidebar')
 
@@ -12,7 +12,7 @@ $sidebar.innerHTML = /*html*/ `
     <li class="divider" data-text="main">Main</li>
 
     <li>
-      <a href="index.html"><i class="bx bxs-calendar icon"></i>Home</a>
+      <a href="index.html"><i class="bx bxs-calendar icon"></i>Inicio</a>
     </li>
 
     <li>
@@ -40,7 +40,6 @@ $sidebar.innerHTML = /*html*/ `
     </li>
   </ul>
 `
-
 
 // SIDEBAR DROPDOWN
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown')

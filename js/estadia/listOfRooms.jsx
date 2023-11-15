@@ -426,7 +426,7 @@ const cardBill = ({registerId}) => {
         data-bs-toggle="modal"
         data-bs-target="#modalFactura"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-        imprimir
+        comprobar
       </button>
     </div>
   `
@@ -495,19 +495,26 @@ const loadBill = async ({$element, registerId}) => {
               `
             })
             .join('')}
+      
+        </tbody>
+      </table>
 
+
+      <table>
+        <tbody>
           <tr>
-            <th>Total consumibles: </th>
-            <td>$${totalProducts.toLocaleString('en')}</td>
-          </tr>  
+            <hr />
+              <th>Total consumibles : </th>
+              <td>$${totalProducts.toLocaleString('en')}</td>
+            </tr>  
 
-          <tr>  
-            <th>Total bruto:</th>
-            <td>$${totalBrute.toLocaleString('en')}</td>
-          </tr>  
+            <tr>  
+              <th>Total bruto : </th>
+              <td>$${totalBrute.toLocaleString('en')}</td>
+            </tr>  
 
-          <tr>
-            <th>Total neto: </th>
+            <tr>
+              <th>Total neto : </th>
             <td>$${(totalBrute - discount).toLocaleString('en')}</td>
           </tr>
         </tbody>

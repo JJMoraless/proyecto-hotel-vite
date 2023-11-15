@@ -19,8 +19,8 @@ $("#btn-registrar").addEventListener("click", async (e = event) => {
   e.preventDefault();
   let regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if ($passInput.value.length < 5) {
-    alert("la contraseña debe tener minimo 5 caracteres");
+  if ($passInput.value.length < 10) {
+    alert("la contraseña debe tener minimo 10 caracteres");
     $passInput.focus()
     return;
   }

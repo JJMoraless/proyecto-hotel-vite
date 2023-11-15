@@ -43,7 +43,7 @@ export const cardInfoRoom = ({description, reservations = []}) => {
             <h5 class="card-title">Informacion y detalles</h5>
             <p class="card-text">${description}</p>
             <p class="card-text">
-              <small class="text-muted">by JJMorales</small>
+              <small class="text-muted"></small>
             </p>
 
             <div class="mb-3">
@@ -56,7 +56,7 @@ export const cardInfoRoom = ({description, reservations = []}) => {
             </div>
 
             <div class="mb-3">
-              <label for="discount" class="form-label  ">Descuento</label>
+              <label for="discount" class="form-label">Descuento</label>
               <input type="number" class="form-control discount" id="discount">
             </div>
 
