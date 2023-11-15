@@ -3,7 +3,7 @@ const token = localStorage.getItem("token")
 console.log("🚀 ~ file: api.js:3 ~ token:", token)
 
 export const hotelApi = axios.create({
-    baseURL: "http://localhost:8888",
+    baseURL: "https://api-hotel-900l.onrender.com",
     headers: {
         'Authorization': `Bearer ${token}`
     }
