@@ -1,10 +1,23 @@
-import {$} from '../utils/functions'
+import { $ } from '../utils/functions'
 
 const $sidebar = $('#sidebar')
 
 /**
  * todo: falta class active para los liks
  */
+
+const user = JSON.parse(localStorage.getItem('user'))
+const asistanceLink = `
+  <li>
+    <a href="Asistencia.html"><i class="bx bxs-time  icon"></i>Asistencia</a>
+  </li>
+`
+
+const adminLink = `
+<li>
+  <a href="administracion.html"><i class="bx bxs-chart  icon"></i>Administracion</a>
+</li>
+`
 
 $sidebar.innerHTML = /*html*/ `
   <a href="#" class="brand"><i class="bx icon "></i></a>
@@ -31,13 +44,9 @@ $sidebar.innerHTML = /*html*/ `
       <a href="tareas.html"><i class="bx bxs-check-square  icon"></i>Tareas</a>
     </li>
 
-    <li>
-      <a href="Asistencia.html"><i class="bx bxs-time  icon"></i>Asistencia</a>
-    </li>
+    ${user.role === 'aprendiz' ? '' : adminLink}
+    ${user.role === 'aprendiz' ? '' : asistanceLink}
 
-    <li>
-      <a href="administracion.html"><i class="bx bxs-chart  icon"></i>Administracion</a>
-    </li>
   </ul>
 `
 

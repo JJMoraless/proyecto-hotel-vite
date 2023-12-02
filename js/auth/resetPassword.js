@@ -1,5 +1,5 @@
-import {hotelApi} from '../api'
-import {$} from '../utils/functions'
+import { hotelApi } from '../api'
+import { $ } from '../utils/functions'
 
 const $btnResetPassword = $('.btn-password-reset')
 
@@ -9,6 +9,11 @@ $btnResetPassword.addEventListener('click', async (e) => {
   const password = $('.user-password').value
 
   try {
+    if (password.length < 10) {
+      alert('la contraseña debe tener al menos 10 caracteres')
+      return
+    }
+
     const response = await hotelApi.post('/auth/reset-password', {
       email,
       code,

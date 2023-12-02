@@ -1,26 +1,29 @@
-import {Calendar} from 'fullcalendar'
+import { Calendar } from 'fullcalendar'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import bootstrap5Plugn from '@fullcalendar/bootstrap5'
 
-import {hotelApi} from './api'
-import {reservar} from './reserva'
-import {format} from 'date-fns'
+import { hotelApi } from './api'
+import { reservar } from './reserva'
+import { format } from 'date-fns'
 
 import './reserva'
-import {$} from './utils/functions'
+import { $ } from './utils/functions'
+
 const $btnReservar = document.querySelector('#btnReservar')
+const user = JSON.parse(localStorage.getItem('user'))
+console.log('🚀 ~ file: main.jsx:15 ~ user:', user)
 
 const getReservations = async () => {
-  const {data} = await hotelApi.get('reservations/?limit=100', {
-    params: {state: 'checkIn'},
+  const { data } = await hotelApi.get('reservations/?limit=100', {
+    params: { state: 'checkIn' },
   })
 
   return data.data.reservation.map((el) => {
     const infoRegister = () => {
       return /*html*/ `
-        motivo viaje : ${el.register.travel_reason}
+        motivo viaje: ${el.register.travel_reason}
       `
     }
 
@@ -28,6 +31,19 @@ const getReservations = async () => {
     const host = el.host.name
     const dateIn = el.dateEntry
     const dateExit = new Date(el.dateOutput)
+
+    const editButtomAdmin = `
+      <button
+        id="btn-edit-reserva"
+        type="button"
+        class="btn btn-success btn-add-consumable-checkIn"
+        style="
+          --bs-btn-padding-y: 0.25rem;
+          --bs-btn-padding-x: 0.5rem;
+          --bs-btn-font-size: 0.90rem;">
+        <b>✏️ editar fechas</b>
+      </button>
+    `
 
     return {
       title: '🧙‍♂️📜 Room: ' + el.roomNumber + ' - ' + host,
@@ -109,16 +125,7 @@ const getReservations = async () => {
               </li>
 
               <li class="list-group-item btn-guardar">
-                <button
-                  id="btn-edit-reserva"
-                  type="button"
-                  class="btn btn-success btn-add-consumable-checkIn"
-                  style="
-                    --bs-btn-padding-y: 0.25rem;
-                    --bs-btn-padding-x: 0.5rem;
-                    --bs-btn-font-size: 0.90rem;">
-                    <b>✏️ editar fechas</b>
-                </button>
+                ${user.role === 'aprendiz' ? '' : editButtomAdmin}
               </li>
             </ul>
 
@@ -129,7 +136,7 @@ const getReservations = async () => {
               class="alert ocultar alert-danger animate__animated animate__fadeInDown  alerta-fecha-editar"
               role="alert"
             >
-               💀 Error fecha de salida debe ser mas grande que entrada 
+              💀 Error fecha de salida debe ser mas grande que entrada 
             </div>
 
             <div

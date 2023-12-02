@@ -1,5 +1,5 @@
-import {hotelApi} from '../api'
-import {$, $$} from '../utils/functions'
+import { hotelApi } from '../api'
+import { $, $$ } from '../utils/functions'
 import {
   cardInfoRoom,
   fillBodyOfTablesConsumed,
@@ -9,7 +9,7 @@ import {
   tableOfAlreadyConsumed,
   tableOfConsumables,
 } from '.'
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
 /* -------------------------------------------------------------------------- */
 /*                                 Facturacion                                */
@@ -38,7 +38,7 @@ $btnFactura.addEventListener('click', (e) => {
       for (let i = totalPages; i > 1; i--) {
         doc.deletePage(i)
       }
-      doc.output('dataurlnewwindow', {filename: 'factura.pdf'})
+      doc.output('dataurlnewwindow', { filename: 'factura.pdf' })
     },
   })
 })
@@ -83,14 +83,14 @@ const addConsumable = async (e = event) => {
     )
 
     const productsConsumed = resProductsConsumed.data.data.register.products
-    getRowsBodyConsumed({products: productsConsumed, $table})
+    getRowsBodyConsumed({ products: productsConsumed, $table })
 
     const $bodyTableMinibar = $(`#body-consumables-${roomNumber}`)
     const resProductsminibar = await hotelApi.get(
       `rooms/${roomNumber}/consumables`,
     )
     const productsMinibar = resProductsminibar.data.data.room.products
-    reFillProductsMinibar({productsMinibar, $bodyTableMinibar, registerId})
+    reFillProductsMinibar({ productsMinibar, $bodyTableMinibar, registerId })
     addConsumablesToRegister()
   }
 }
@@ -200,8 +200,8 @@ const loadProdudtcs = async (e) => {
 
 const addProduct = async (e = event) => {
   const $form = $('#form-products')
-  const {amount, ...data} = Object.fromEntries(new FormData($form))
-  await hotelApi.post('products', {...data, type: 'consumable'})
+  const { amount, ...data } = Object.fromEntries(new FormData($form))
+  await hotelApi.post('products', { ...data, type: 'consumable' })
   loadProdudtcs()
 }
 
@@ -287,7 +287,7 @@ const updateProduct = (e = event) => {
     const productsMinibar = res.data.data.room.products
     const $bodyTableMinibar = $(`#body-consumables-${roomNumber}`)
 
-    reFillProductsMinibar({productsMinibar, registerId, $bodyTableMinibar})
+    reFillProductsMinibar({ productsMinibar, registerId, $bodyTableMinibar })
     addConsumablesToRegister()
   })
 }
@@ -324,7 +324,7 @@ const buildTbodyPayments = () => {
   })
 }
 
-const tablePayments = ({registerId}) => {
+const tablePayments = ({ registerId }) => {
   const table = /*html*/ `
     <div class="card shadow-lg ">
       <div class="card-header">
@@ -410,7 +410,7 @@ function addPaymentBtn() {
   })
 }
 
-const cardBill = ({registerId}) => {
+const cardBill = ({ registerId }) => {
   return /*html*/ `
     <div class="card shadow-lg p-3">
       <h3>comprobante de pago</h3>
@@ -432,7 +432,7 @@ const cardBill = ({registerId}) => {
   `
 }
 
-const loadBill = async ({$element, registerId}) => {
+const loadBill = async ({ $element, registerId }) => {
   const resRegister = await hotelApi.get(`registers/${registerId}`)
   const register = resRegister.data.data.register
 
@@ -445,7 +445,7 @@ const loadBill = async ({$element, registerId}) => {
 
   const numberGuestsByRoom = register.companions.length + 1
   const totalProducts = register.products.reduce(
-    (acc, {RegisterProduct: el}) => acc + el.total,
+    (acc, { RegisterProduct: el }) => acc + el.total,
     0,
   )
 
@@ -523,7 +523,7 @@ const loadBill = async ({$element, registerId}) => {
   `
 }
 
-const loadStayData = async ({$element, registerId}) => {
+const loadStayData = async ({ $element, registerId }) => {
   const resRegister = await hotelApi.get(`registers/${registerId}`)
   const register = resRegister.data.data.register
   const guestsRoom = register.companions.length + 1
@@ -552,7 +552,7 @@ const loadStayData = async ({$element, registerId}) => {
   `
 }
 
-const loadGuestData = async ({$element, registerId}) => {
+const loadGuestData = async ({ $element, registerId }) => {
   const resRegister = await hotelApi.get(`registers/${registerId}`)
   const register = resRegister.data.data.register
 
@@ -572,7 +572,7 @@ const loadGuestData = async ({$element, registerId}) => {
   `
 }
 
-const loadPayments = async ({$element: $paymentsData, registerId}) => {
+const loadPayments = async ({ $element: $paymentsData, registerId }) => {
   const resRegister = await hotelApi.get(`registers/${registerId}`)
   const register = resRegister.data.data.register
   const payments = register.payments
@@ -630,10 +630,10 @@ const getBill = () => {
     itemBtn.addEventListener('click', async (e = event) => {
       const registerId = parseInt(e.target.dataset.registerid)
       $registerIdModal.textContent = registerId
-      await loadBill({$element: $billData, registerId})
-      await loadStayData({$element: $stayData, registerId})
-      await loadGuestData({$element: $guesData, registerId})
-      await loadPayments({$element: $paymentsData, registerId})
+      await loadBill({ $element: $billData, registerId })
+      await loadStayData({ $element: $stayData, registerId })
+      await loadGuestData({ $element: $guesData, registerId })
+      await loadPayments({ $element: $paymentsData, registerId })
     })
   })
 }
@@ -653,8 +653,8 @@ const editTarifaAndDiscount = () => {
       const resRateEdited = await hotelApi.put(`registers/${registerId}`, {
         priceSelected: tarifa,
       })
-      console.log({resRateEdited})
-      console.log({registerId})
+      console.log({ resRateEdited })
+      console.log({ registerId })
     })
   })
 
@@ -686,7 +686,7 @@ const editTarifaAndDiscount = () => {
 
 const listOfRooms = async () => {
   const resRooms = await hotelApi.get('rooms')
-  const {rooms} = resRooms.data.data
+  const { rooms } = resRooms.data.data
 
   const roomsPromise = rooms.map(async (room) => {
     let $itemRoomInfo = document.createElement('div')
@@ -694,21 +694,21 @@ const listOfRooms = async () => {
     const resConsumables = await hotelApi.get(
       `rooms/${room.number}/consumables`,
     )
-    const {products} = resConsumables.data.data.room
-    const {reservations} = room
+    const { products } = resConsumables.data.data.room
+    const { reservations } = room
     const [reservation] = reservations
     const missingRegister = /*html*/ `<span class="badge text-bg-danger rounded-pill">sin checkin</span>`
     $itemRoomInfo.innerHTML = /*html*/ `
       <div id="acordion-id-${room.number}" class="accordion-item">
         <!-- header --> 
-        ${headerOfItemAccordion({...room})}
+        ${headerOfItemAccordion({ ...room })}
         <div
           id="panelsStayOpen-${room.number}"
           class="accordion-collapse collapse show"
           aria-labelledby="panelsStayOpen-${room.number}"
         >
           <div class="accordion-body">
-            ${cardInfoRoom({...room})}
+            ${cardInfoRoom({ ...room })}
             <div class="row">
 
               <!-- tabla de consumibles --> 
@@ -737,7 +737,7 @@ const listOfRooms = async () => {
                 ${
                   !reservation?.register
                     ? ''
-                    : tablePayments({registerId: reservation?.register?.id})
+                    : tablePayments({ registerId: reservation?.register?.id })
                 }
               </div>
 
@@ -745,7 +745,7 @@ const listOfRooms = async () => {
                 ${
                   !reservation?.register
                     ? ''
-                    : cardBill({registerId: reservation?.register?.id})
+                    : cardBill({ registerId: reservation?.register?.id })
                 }
               </div>
 

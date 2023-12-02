@@ -1,4 +1,4 @@
-import {hotelApi} from '../api'
+import { hotelApi } from '../api'
 let endPointReservas = 'reservations?'
 
 const formatDate = (dateString = '') => {
@@ -8,6 +8,7 @@ const formatDate = (dateString = '') => {
 document
   .getElementById('selectedSearch')
   .addEventListener('change', function () {
+    response
     const param = document.getElementById('selectedSearch').value
     if (param === 'Todo') {
       document.getElementById('searchDocument').style.display = 'none'
@@ -51,8 +52,10 @@ export const getReservationsCheckIn = async () => {
         limit: 10000000000,
       },
     })
+  
 
     const reservations = response.data.data.reservation || []
+    console.log("🚀 ~ file: getReservas.js:58 ~ getReservationsCheckIn ~ reservations:", reservations)
 
     // Obtiene una referencia al cuerpo de la tabla en el HTML
     const tableBody = document.getElementById('table-body-reservations')

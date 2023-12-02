@@ -1,5 +1,5 @@
-import {hotelApi} from '../api'
-import {$} from '../utils/functions'
+import { hotelApi } from '../api'
+import { $ } from '../utils/functions'
 
 const $btnEmail = $('.btn-email')
 const $inputEmail = $('.user-email')
@@ -19,15 +19,16 @@ $btnEmail.addEventListener('click', async (e) => {
     $btnEmail.classList.add('disabled')
     localStorage.setItem('email-forgot', true)
     localStorage.setItem('email-reset', email)
-
     const emailReset = localStorage.getItem('email-reset')
-      console.log("🚀 ~ file: forgotPassword.js:24 ~ $btnEmail.addEventListener ~ emailReset:", emailReset)
-      
+    console.log(
+      '🚀 ~ file: forgotPassword.js:24 ~ $btnEmail.addEventListener ~ emailReset:',
+      emailReset,
+    )
+
     alert('correo enviado')
     await hotelApi.post('/auth/forgot-password', {
       email,
     })
-
     setTimeout(() => {
       $btnEmail.classList.remove('disabled')
       localStorage.removeItem('email-forgot')
