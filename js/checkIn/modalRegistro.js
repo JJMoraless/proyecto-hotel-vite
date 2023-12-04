@@ -580,20 +580,25 @@ document
 document.getElementById("btnAsignarAcompañante")
   .addEventListener("click", async () => {
     const companionId = document.getElementById("companionDocument").value;
-    try {
-      const response = await hotelApi.post("registers/add-companion", {
-        registerId,
-        companionId
-      });
-      if (response) {
-        console.log("Acompañante asignado con exito");
-        const mensajeAsignarAcompañante = (document.getElementById(
-          "asignarAcompañante"
-        ).style.display = "block");
-      } else {
-        console.log("Error al asignar el acompañante");
-      }
-    } catch (error) {
-      console.error("Error de solicitud al asignar acompañante ", error);
+    const host = document.getElementById("hostDocument").value;
+    if (companionId === host) {
+      alert("No se puede agregar al responsable como acompañante en la misma reserva")
+    } else {
+      try {
+        const response = await hotelApi.post("registers/add-companion", {
+          registerId,
+          companionId
+        });
+        if (response) {
+          console.log("Acompañante asignado con exito");
+          const mensajeAsignarAcompañante = (document.getElementById(
+            "asignarAcompañante"
+          ).style.display = "block");
+        } else {
+          console.log("Error al asignar el acompañante");
+        }
+      } catch (error) {
+        console.error("Error de solicitud al asignar acompañante ", error);
+      } 
     }
   });

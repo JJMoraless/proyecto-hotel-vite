@@ -112,23 +112,26 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table" id="dataTable" width="ml-auto" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Documento</th>
-                                <th>Nombre</th>
-                                <th>Ficha</th>
-                                <th>Email</th>
-                                <th>Teléfono</th>
-                                <th>Dirección</th>
-                                <th>Rol</th>
-                                <th>Estado</th>
-                                <th>Modificar</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body-users"></tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="dataTable" width="ml-auto"
+                            cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Documento</th>
+                                    <th>Nombre</th>
+                                    <th>Ficha</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Modificar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body-users" class="table-responsive"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
             <div class="modal fade" id="userDetailsModal" tabindex="-1" aria-labelledby="userDetailsModalLabel"
@@ -237,17 +240,21 @@
                         <h3>Tarifas</h3>
                         <div class="mb-3">
                             <label for="tarifaEjecutivo" class="form-label">Tarifa Ejecutivo</label>
-                            <input type="text" class="form-control" id="tarifaEjecutivo">
+                            <input type="number" class="form-control" id="tarifaEjecutivo">
                         </div>
                         <div class="mb-3">
                             <label for="tarifaRegular" class="form-label">Tarifa Regular</label>
-                            <input type="text" class="form-control" id="tarifaRegular">
+                            <input type="number" class="form-control" id="tarifaRegular">
                         </div>
                         <div>
                             <button class="btn btn-success" id="btnActualizarTarifas">
                                 Actualizar
                             </button>
                         </div>
+                    </div>
+                    <div id="mensajeTarifas"  class="alert ocultar alert-danger animate__animated animate__fadeInDown"
+                    role="alert" style="display: none">
+                      <p>Se han modificado las tarifas</p>
                     </div>
                 </div>
                 <div id="habitacionesContainer" class="table-responsive p-5 bg-body border rounded">
@@ -280,11 +287,11 @@
                 </div>
             </div>
         </main>
-              <!-- Footer -->
-      <footer class="bg-dark text-center text-white footer">
-        
-      </footer>
-      <!-- Footer -->
+        <!-- Footer -->
+        <footer class="bg-dark text-center text-white footer">
+
+        </footer>
+        <!-- Footer -->
     </section>
 </body>
 

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consolidado</title>
+  <script type="module" src="./js/consolidado/consolidado.js"></script>
+  <script type="module" src="./js/consolidado/grafico.js"></script>
+
+  <!-- Icons -->
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <!-- End Icons -->
+
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="./js/components/index.js" type="module"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <script>
+    const token = localStorage.getItem("token")
+    if (!token) {
+      window.location.href = "login.html"
+    }
+  </script>
+  <section id="sidebar" class="hide shadow-lg "></section>
+  <section id="content">
+    <nav id="navbar" class="blur fixed-top border-bottom"></nav>
+    <main>
+      <section class="pb-5" style="margin: 10px;">
+        <h2 class="pt-5">Equipo de desarrollo</h2>
+        <hr />
+        <div class="row g-md-2 p-3 shadow-sm rounded border">
+          <div class="card mb-4 shadow-sm" style="background-color: lightgray;">
+                <div class="row no-gutters">
+                    <!-- Sección de la izquierda para la foto -->
+                    <div class="col-md-6">
+                        <img src="./public/img/jhon .jpeg" class="img-fluid" style="max-width:200px;">
+                    </div>
+                    <!-- Sección de la derecha para los otros datos -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h3>Jhon Jairo Morales Garcia</h3>
+                            <h5>Analisis y desarrollo de software</h5>
+                            <p>3209153376</p>
+                            <p>jjmorales.dev@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm" style="background-color: lightgray;">
+                <div class="row no-gutters">
+                    <!-- Sección de la izquierda para la foto -->
+                    <div class="col-md-6">
+                        <img src="./public/img/karol.jpeg" class="img-fluid" style="max-width:200px;">
+                    </div>
+                    <!-- Sección de la derecha para los otros datos -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h3>Karol Yurley Aguilar Rueda</h3>
+                            <h5>Analisis y desarrollo de software</h5>
+                            <p>3043487347</p>
+                            <p>karolaguilarrueda09@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm" style="background-color: lightgray;">
+                <div class="row no-gutters">
+                    <!-- Sección de la izquierda para la foto -->
+                    <div class="col-md-6">
+                        <img src="./public/img/deicy.jpeg" class="img-fluid" style="max-width:200px;">
+                    </div>
+                    <!-- Sección de la derecha para los otros datos -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h3>Deicy Milena Jejen Guerrero</h3>
+                            <h5>Analisis y desarrollo de software</h5>
+                            <p>3205662947</p>
+                            <p>deicyjejen21@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm" style="background-color: lightgray;">
+                <div class="row no-gutters">
+                    <!-- Sección de la izquierda para la foto -->
+                    <div class="col-md-6">
+                        <img src="./public/img/brayan.jpeg" class="img-fluid" style="max-width:200px;">
+                    </div>
+                    <!-- Sección de la derecha para los otros datos -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h3>Brayan Andrés Crispín Cáceres</h3>
+                            <h5>Analisis y desarrollo de software</h5>
+                            <p>3152999632</p>
+                            <p>brayan.crispin@outlook.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm" style="background-color: lightgray;">
+                <div class="row no-gutters">
+                    <!-- Sección de la izquierda para la foto -->
+                    <div class="col-md-6">
+                        <img src="./public/img/magda.jpg" class="img-fluid" style="max-width:200px;">
+                    </div>
+                    <!-- Sección de la derecha para los otros datos -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h3>Magda Milena Garcia Gamboa</h3>
+                            <h5>Instructora</h5>
+                            <p>magmigarcia@misena.edu.co</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-md-2  p-3 shadow-sm rounded border">
+          <div class="table-responsive p-5 bg-body border rounded ">
+            <canvas id="ganancias" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+</body>
+
+</html>

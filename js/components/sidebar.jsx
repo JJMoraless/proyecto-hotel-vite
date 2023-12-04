@@ -47,6 +47,12 @@ $sidebar.innerHTML = /*html*/ `
     ${user.role === 'aprendiz' ? '' : adminLink}
     ${user.role === 'aprendiz' ? '' : asistanceLink}
 
+    
+    <li>
+      <a href="equipo.html"><i class="bx bxs-check-square  icon"></i>Equipo de desarrollo</a>
+    </li>
+
+
   </ul>
 `
 

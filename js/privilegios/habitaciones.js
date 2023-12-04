@@ -4,6 +4,9 @@ let idTarifaEjecutivo;
 let idTarifaRegular;
 
 const getRates = async () => {
+    const mensajeTarifas = (document.getElementById(
+        "mensajeTarifas"
+      ).style.display = "none");
     try {
         const response = await hotelApi.get("rates");
         const rates = response.data.data.rates || [];
@@ -11,7 +14,6 @@ const getRates = async () => {
         const tarifaEjecutivo = document.getElementById("tarifaEjecutivo");
         const tarifaRegularInput = document.getElementById("tarifaRegular");
 
-        // Buscar y asignar valores a los campos correspondientes
         rates.forEach(rate => {
             if (rate.type === "ejecutivo" && tarifaEjecutivo) {
                 tarifaEjecutivo.value = rate.price || "";
@@ -30,7 +32,6 @@ window.addEventListener("load", getRates);
 document.getElementById("btnActualizarTarifas").addEventListener("click", async () => {
     const tarifaEjecutivo = document.getElementById("tarifaEjecutivo").value;
     const tarifaRegular = document.getElementById("tarifaRegular").value;
-
     try {
         if (idTarifaEjecutivo && idTarifaRegular) {
             const responseEjecutivo = await hotelApi.put(`rates/${idTarifaEjecutivo}`, {
@@ -41,6 +42,9 @@ document.getElementById("btnActualizarTarifas").addEventListener("click", async 
             });
             if (responseEjecutivo.status === 200 && responseRegular.status === 200) {
                 console.log("Actualización de tarifas exitosa");
+                const mensajeTarifas = (document.getElementById(
+                    "mensajeTarifas"
+                  ).style.display = "block");
             } else {
                 console.log("Error en la respuesta de actualización de tarifas");
             }

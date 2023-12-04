@@ -8,7 +8,7 @@ const formatDate = (dateString = '') => {
 document
   .getElementById('selectedSearch')
   .addEventListener('change', function () {
-    response
+    // response
     const param = document.getElementById('selectedSearch').value
     if (param === 'Todo') {
       document.getElementById('searchDocument').style.display = 'none'
