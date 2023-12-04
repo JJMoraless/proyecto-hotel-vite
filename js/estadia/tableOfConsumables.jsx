@@ -1,4 +1,4 @@
-export const productsOfTableConsumables = ({products, registerId}) => {
+export const productsOfTableConsumables = ({ products, registerId }) => {
   return /*html*/ `
     ${products
       .map((product) => {
@@ -52,15 +52,7 @@ export const tableOfConsumables = ({
             ${productsOfTableConsumables({ products, registerId })}
           </tbody>
         </table>
-      </div>    <button
-                id="${registerId}"
-                type="button"
-                class="btn btn-success btn-add-consumable-checkIn"
-                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover"
-              >
-                agregar a huesped
-              </button>
+      </div>    
 
       <div class="card-footer text-body-secondary">
         <div class="row">

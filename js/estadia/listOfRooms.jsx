@@ -60,14 +60,20 @@ const reFillProductsMinibar = ({
 // Consumibles a registro
 const addConsumable = async (e = event) => {
   const $productRow = e.currentTarget.closest('.product-row')
+  console.log("🚀 ~ file: listOfRooms.jsx:63 ~ addConsumable ~ $productRow:", $productRow)
+  
   const $cardBody = e.currentTarget.closest('.card-body')
 
   const $footer = $cardBody.nextElementSibling
+  console.log("🚀 ~ file: listOfRooms.jsx:66 ~ addConsumable ~ $footer:", $footer)
+  
   const $inputAmount = $footer.querySelector('.form-control')
 
   const productId = Number($productRow.id)
   const registerId = Number(e.currentTarget.id)
   const amount = Number($inputAmount.value)
+
+
   const roomNumber = Number($cardBody.id)
 
   if (registerId) {
@@ -118,21 +124,11 @@ const productsHandlerAbastecer = async (e = event) => {
   $registerNumber.innerHTML = registerId || ''
   loadProdudtcs(e)
 }
-// Delete product
-// ;<button
-//   id="btn-delete-products"
-//   type="button"
-//   class="btn  btn-danger btn-add-consumable-checkIn btn-product-form"
-//   style="
-//           --bs-btn-padding-y: 0.25rem;
-//           --bs-btn-padding-x: 0.5rem;
-//           --bs-btn-font-size: 0.70rem;
-//         ">
-//   eliminar
-// </button>
+
 // Products
 const loadProdudtcs = async (e) => {
   const $tableBodyProducts = document.querySelector('#body-products')
+
   const resProducts = await hotelApi.get('products', {
     params: {
       limit: 10000000,
@@ -147,6 +143,7 @@ const loadProdudtcs = async (e) => {
     $tr.innerHTML = /*html*/ `
       <td>${itemProduct.name}</td>
       <td>${itemProduct.price}</td>
+
       <td class="">
         <button
           id="btn-edit-product"
@@ -159,9 +156,7 @@ const loadProdudtcs = async (e) => {
             editar
         </button>
 
-      
-
-        <button  <button
+        <button
           id="btn-delete-products"
           type="button"
           class="btn  btn-danger btn-add-consumable-checkIn btn-product-form"
@@ -173,14 +168,16 @@ const loadProdudtcs = async (e) => {
           >
             eliminar
         </button>
+
+        <button
           id="btn-add-products-minibar"
           type="button"
           class="btn btn-success btn-add-consumable-checkIn btn-product-form"
-          style="
-            --bs-btn-padding-y: 0.25rem;
-            --bs-btn-padding-x: 0.5rem;
-            --bs-btn-font-size: 0.70rem;
-          "
+            style="
+              --bs-btn-padding-y: 0.25rem;
+              --bs-btn-padding-x: 0.5rem;
+              --bs-btn-font-size: 0.70rem;
+            "
           >
           agregar
         </button>
