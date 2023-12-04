@@ -118,7 +118,18 @@ const productsHandlerAbastecer = async (e = event) => {
   $registerNumber.innerHTML = registerId || ''
   loadProdudtcs(e)
 }
-
+// Delete product
+// ;<button
+//   id="btn-delete-products"
+//   type="button"
+//   class="btn  btn-danger btn-add-consumable-checkIn btn-product-form"
+//   style="
+//           --bs-btn-padding-y: 0.25rem;
+//           --bs-btn-padding-x: 0.5rem;
+//           --bs-btn-font-size: 0.70rem;
+//         ">
+//   eliminar
+// </button>
 // Products
 const loadProdudtcs = async (e) => {
   const $tableBodyProducts = document.querySelector('#body-products')
@@ -148,7 +159,9 @@ const loadProdudtcs = async (e) => {
             editar
         </button>
 
-        <button
+      
+
+        <button  <button
           id="btn-delete-products"
           type="button"
           class="btn  btn-danger btn-add-consumable-checkIn btn-product-form"
@@ -160,8 +173,6 @@ const loadProdudtcs = async (e) => {
           >
             eliminar
         </button>
-
-        <button
           id="btn-add-products-minibar"
           type="button"
           class="btn btn-success btn-add-consumable-checkIn btn-product-form"
