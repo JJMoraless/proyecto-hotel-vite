@@ -60,19 +60,24 @@ const reFillProductsMinibar = ({
 // Consumibles a registro
 const addConsumable = async (e = event) => {
   const $productRow = e.currentTarget.closest('.product-row')
-  console.log("🚀 ~ file: listOfRooms.jsx:63 ~ addConsumable ~ $productRow:", $productRow)
-  
+  console.log(
+    '🚀 ~ file: listOfRooms.jsx:63 ~ addConsumable ~ $productRow:',
+    $productRow,
+  )
+
   const $cardBody = e.currentTarget.closest('.card-body')
 
   const $footer = $cardBody.nextElementSibling
-  console.log("🚀 ~ file: listOfRooms.jsx:66 ~ addConsumable ~ $footer:", $footer)
-  
+  console.log(
+    '🚀 ~ file: listOfRooms.jsx:66 ~ addConsumable ~ $footer:',
+    $footer,
+  )
+
   const $inputAmount = $footer.querySelector('.form-control')
 
   const productId = Number($productRow.id)
   const registerId = Number(e.currentTarget.id)
   const amount = Number($inputAmount.value)
-
 
   const roomNumber = Number($cardBody.id)
 

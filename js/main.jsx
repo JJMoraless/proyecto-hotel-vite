@@ -45,6 +45,20 @@ const getReservations = async () => {
       </button>
     `
 
+    const deleteButtomAprendiz = `
+      <button
+        id="btn-edit-reserva"
+        type="button"
+        disabled
+        class="btn btn-success btn-add-consumable-checkIn"
+        style="
+          --bs-btn-padding-y: 0.25rem;
+          --bs-btn-padding-x: 0.5rem;
+          --bs-btn-font-size: 0.90rem;">
+        <b>✏️ editar fechas</b>
+      </button>
+    `
+
     return {
       title: '🧙‍♂️📜 Room: ' + el.roomNumber + ' - ' + host,
       start: dateIn,
@@ -125,7 +139,11 @@ const getReservations = async () => {
               </li>
 
               <li class="list-group-item btn-guardar">
-                ${user.role === 'aprendiz' ? '' : editButtomAdmin}
+                ${
+                  user.role === 'aprendiz'
+                    ? deleteButtomAprendiz
+                    : editButtomAdmin
+                }
               </li>
             </ul>
 
